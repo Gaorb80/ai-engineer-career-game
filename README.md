@@ -6,6 +6,12 @@ Một tờ giấy báo điểm, bảy cấp bậc, và một chiếc ghế giám
 
 Đây là game chọn lựa rẽ nhánh chạy ngay trên trình duyệt, đọc được trên điện thoại, có hai ngôn ngữ Việt và Anh. Game lấy cảm hứng từ video [7 Cấp Bậc Thăng Tiến Kỹ Sư AI](https://www.youtube.com/watch?v=9mbIKLKq9UM). Các mốc lương, học phí, điểm chuẩn, luật AI trong truyện là số liệu từ video đó, được dựng lại thành một hành trình bạn tự đi.
 
+## Chơi ngay, không cần cài gì
+
+**https://gaorb80.github.io/ai-engineer-career-game/**
+
+Mở link trên điện thoại hoặc máy tính là chơi được. Tiến trình tự lưu trong trình duyệt.
+
 [English summary below](#english)
 
 ## Bạn sẽ chơi gì
@@ -59,10 +65,12 @@ Nút **VI / EN** có ở mọi màn hình, phím tắt là `L`. Đổi bất c�
 
 Cách này an toàn nhờ một quy tắc: hai bản dịch phải có cùng id node, cùng lựa chọn, cùng hiệu ứng và điều kiện. Lệch một chỗ là `npm run validate` báo lỗi và chỉ rõ chỗ lệch.
 
-## Cài đặt và chơi trong ba bước
+## Chạy trên máy của bạn (không bắt buộc)
+
+Chỉ cần khi muốn chơi offline hoặc sửa game. Ba bước:
 
 1. **Cài Node.js** bản LTS từ https://nodejs.org (một lần duy nhất). Kiểm tra bằng `node -v`, cần 20.19 trở lên.
-2. **Lấy mã nguồn.** Repo đang riêng tư nên bạn cần được cấp quyền xem. Có quyền rồi thì:
+2. **Lấy mã nguồn.** Repo công khai, cứ clone:
    ```bash
    git clone https://github.com/Gaorb80/ai-engineer-career-game.git
    ```
@@ -136,4 +144,6 @@ Game lấy cảm hứng từ video [7 Cấp Bậc Thăng Tiến Kỹ Sư AI](htt
 - Switch between English and Vietnamese at any time with the **VI / EN** button or the `L` key, even mid-scene. Your progress and stats stay put.
 - Inspired by the video the Vietnamese video [7 Cấp Bậc Thăng Tiến Kỹ Sư AI](https://www.youtube.com/watch?v=9mbIKLKq9UM) ("The 7 Levels of AI Engineer Career Progression", channel Cỏ Không Ngu). The seven-level structure and the salary, tuition and law figures come from it, shown with approximate USD conversions in the English version. The branching choices and nine of the eleven endings are original.
 
-Run it: install Node.js (LTS, 20.19 or newer) from https://nodejs.org, then double-click `play.bat` on Windows, run `./play.sh` on macOS/Linux, or type `npm start` in the project folder. The first run installs dependencies and opens the game at http://localhost:4173. Add `--lan` to play on a phone on the same Wi-Fi.
+**Play now, nothing to install:** https://gaorb80.github.io/ai-engineer-career-game/
+
+Or run it locally: install Node.js (LTS, 20.19 or newer) from https://nodejs.org, then double-click `play.bat` on Windows, run `./play.sh` on macOS/Linux, or type `npm start` in the project folder. The first run installs dependencies and opens the game at http://localhost:4173. Add `--lan` to play on a phone on the same Wi-Fi.
