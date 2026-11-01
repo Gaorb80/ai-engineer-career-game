@@ -4,7 +4,7 @@
 
 Một tờ giấy báo điểm, bảy cấp bậc, và một chiếc ghế giám đốc AI ở cuối đường. Bạn đi từ sinh viên tới đỉnh nghề bằng những lựa chọn nhỏ, và mỗi lựa chọn đều có giá của nó.
 
-Đây là game chọn lựa rẽ nhánh chạy ngay trên trình duyệt, đọc được trên điện thoại, có hai ngôn ngữ Việt và Anh. Các mốc lương, học phí, điểm chuẩn, luật AI trong truyện là số liệu thật lấy từ một video phân tích nghề kỹ sư AI ở Việt Nam, rồi dựng thành một hành trình bạn tự đi.
+Đây là game chọn lựa rẽ nhánh chạy ngay trên trình duyệt, đọc được trên điện thoại, có hai ngôn ngữ Việt và Anh. Game lấy cảm hứng từ video [7 Cấp Bậc Thăng Tiến Kỹ Sư AI](https://www.youtube.com/watch?v=9mbIKLKq9UM). Các mốc lương, học phí, điểm chuẩn, luật AI trong truyện là số liệu từ video đó, được dựng lại thành một hành trình bạn tự đi.
 
 [English summary below](#english)
 
@@ -59,14 +59,36 @@ Nút **VI / EN** có ở mọi màn hình, phím tắt là `L`. Đổi bất c�
 
 Cách này an toàn nhờ một quy tắc: hai bản dịch phải có cùng id node, cùng lựa chọn, cùng hiệu ứng và điều kiện. Lệch một chỗ là `npm run validate` báo lỗi và chỉ rõ chỗ lệch.
 
-## Chạy thử
+## Cài đặt và chơi trong ba bước
 
-Cần Node 20.19 trở lên.
+1. **Cài Node.js** bản LTS từ https://nodejs.org (một lần duy nhất). Kiểm tra bằng `node -v`, cần 20.19 trở lên.
+2. **Lấy mã nguồn.** Repo đang riêng tư nên bạn cần được cấp quyền xem. Có quyền rồi thì:
+   ```bash
+   git clone https://github.com/Gaorb80/ai-engineer-career-game.git
+   ```
+   Hoặc vào trang repo, bấm **Code**, chọn **Download ZIP**, rồi giải nén.
+3. **Chạy game.**
+   - Windows: bấm đúp file **`play.bat`**.
+   - macOS, Linux: chạy `./play.sh`.
+   - Cách nào cũng được: mở terminal trong thư mục dự án và gõ `npm start`.
+
+Lần đầu game tự cài thư viện (cần mạng, mất khoảng một phút), rồi tự mở trình duyệt tại http://localhost:4173. Những lần sau mở gần như ngay. Muốn dừng, đóng cửa sổ hoặc nhấn `Ctrl+C`.
+
+**Chơi trên điện thoại:** chạy `npm start -- --lan` (hoặc `./play.sh --lan`), rồi mở địa chỉ dòng `Network` hiện ra trên điện thoại cùng Wi-Fi. Windows có thể hỏi về tường lửa, chọn cho phép mạng riêng.
+
+| Gặp vấn đề | Cách xử lý |
+|---|---|
+| "Chưa có Node.js" | Làm bước 1, rồi chạy lại |
+| Báo Node quá cũ | Cài lại bản LTS mới từ nodejs.org |
+| Lỗi khi cài thư viện | Thường do mất mạng. Kiểm tra mạng rồi chạy lại |
+| Cổng 4173 đang bận | Đóng cửa sổ game đang mở trước đó |
+
+## Dành cho người làm code
 
 ```bash
 cd game
 npm install
-npm run dev        # mở http://localhost:5173
+npm run dev        # http://localhost:5173, tự tải lại khi sửa
 ```
 
 | Lệnh | Việc |
@@ -100,7 +122,7 @@ Dự án do ba agent AI làm việc cùng nhau trong Orca, mỗi bên một vi�
 
 ## Nguồn và lưu ý
 
-Số liệu trong game tổng hợp theo một video giải thích nghề kỹ sư AI (kênh Cỏ Không Ngu) và có thể đã thay đổi theo thời gian. Nhân vật và tình huống là hư cấu. Repo này không chứa hình hay lời của video gốc, lời truyện được viết lại. Nếu định công khai, nên hỏi ý kênh gốc trước.
+Game lấy cảm hứng từ video [7 Cấp Bậc Thăng Tiến Kỹ Sư AI](https://www.youtube.com/watch?v=9mbIKLKq9UM) (kênh Cỏ Không Ngu). Cấu trúc bảy cấp và các số liệu về lương, học phí, điểm chuẩn, luật AI đều từ video đó, có thể đã thay đổi theo thời gian. Nhân vật, tình huống, các lựa chọn rẽ nhánh và chín trong mười một kết là phần viết thêm. Repo này không chứa hình hay lời của video gốc, lời truyện được viết lại. Nếu định công khai, nên hỏi ý kênh gốc trước.
 
 ---
 
@@ -112,6 +134,6 @@ Số liệu trong game tổng hợp theo một video giải thích nghề kỹ s
 - Eleven endings: four good, two neutral, five bad. Two come straight from the video, nine are extensions grounded in real careers.
 - Tempting traps, and a hard burnout limit: reach 10 Stress and the run ends.
 - Switch between English and Vietnamese at any time with the **VI / EN** button or the `L` key, even mid-scene. Your progress and stats stay put.
-- Salary, tuition and law figures come from a video analysing the AI engineering career path in Vietnam. They are shown with approximate USD conversions in the English version.
+- Inspired by the video the Vietnamese video [7 Cấp Bậc Thăng Tiến Kỹ Sư AI](https://www.youtube.com/watch?v=9mbIKLKq9UM) ("The 7 Levels of AI Engineer Career Progression", channel Cỏ Không Ngu). The seven-level structure and the salary, tuition and law figures come from it, shown with approximate USD conversions in the English version. The branching choices and nine of the eleven endings are original.
 
-Run it: `cd game && npm install && npm run dev`, then open http://localhost:5173. Needs Node 20.19 or newer.
+Run it: install Node.js (LTS, 20.19 or newer) from https://nodejs.org, then double-click `play.bat` on Windows, run `./play.sh` on macOS/Linux, or type `npm start` in the project folder. The first run installs dependencies and opens the game at http://localhost:4173. Add `--lan` to play on a phone on the same Wi-Fi.

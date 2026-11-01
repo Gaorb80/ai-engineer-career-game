@@ -1,0 +1,11 @@
+{
+  "name": "ai-engineer-career-game-launcher",
+  "private": true,
+  "type": "module",
+  "description": "Chạy game bằng một lệnh: npm start",
+  "scripts": {
+    "start": "node scripts/play.mjs",
+    "test": "npm --prefix game test",
+    "validate": "npm --prefix game run validate"
+  }
+}
