@@ -15,3 +15,7 @@ cd game; npm install; npm run dev (cổng 5173); npm test; npm run validate
 - Xác minh số liệu level 5-7 với nguồn gốc (ASR có thể nghe sai).
 - Thêm màn Giới thiệu/ghi nguồn, xin phép kênh gốc nếu công khai.
 - Muốn OpenCode dùng DeepSeek: chọn model khi worker-start (--model) hoặc cấu hình opencode.
+
+## Kiểm thử độc lập (Antigravity, game/tests/playthrough.mjs)
+- 9/9 kết đạt được, 15/15 lựa chọn có requires khả thi, 0 node kẹt.
+- Phát hiện: kết caio/san-pham gần như không đạt được -> hạ ngưỡng l6-ngatu, l7-luong, l7-su-co, ket-ra-ngoai. Kết caio tăng ~10 lần số trạng thái dẫn tới.
