@@ -1,11 +1,14 @@
-// Kiểm tra game/public/story.json trước khi build. Không cần dependency.
+// Kiểm tra story.json trước khi build. Không cần dependency.
+// Dùng: node scripts/validate.js [đường dẫn story.json]
 import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 
 const STAT_KEYS = ["skill", "money", "stress", "network"];
 const ENDING_TYPES = ["good", "bad", "neutral"];
 const SOURCES = ["video", "extended"];
 
-const file = new URL("../public/story.json", import.meta.url);
+const arg = process.argv[2];
+const file = arg ? resolve(arg) : new URL("../public/story.json", import.meta.url);
 const errors = [];
 
 let story;
@@ -44,6 +47,27 @@ while (queue.length) {
   }
 }
 
+// Duyệt ngược từ các ending: node không tới được ending nào là kẹt hoặc lặp vô tận.
+const endingIds = ids.filter((id) => nodes[id]?.ending);
+const comingFrom = new Map();
+for (const [id, node] of Object.entries(nodes)) {
+  for (const choice of node.choices || []) {
+    if (!choice.next || !nodes[choice.next]) continue;
+    if (!comingFrom.has(choice.next)) comingFrom.set(choice.next, []);
+    comingFrom.get(choice.next).push(id);
+  }
+}
+const canFinish = new Set(endingIds);
+const backQueue = [...endingIds];
+while (backQueue.length) {
+  const id = backQueue.shift();
+  for (const prev of comingFrom.get(id) || []) {
+    if (canFinish.has(prev)) continue;
+    canFinish.add(prev);
+    backQueue.push(prev);
+  }
+}
+
 const endings = [];
 
 for (const [id, node] of Object.entries(nodes)) {
@@ -77,6 +101,12 @@ for (const [id, node] of Object.entries(nodes)) {
     endings.push({ id, level: node.level, ...ending });
   } else if (!choices.length) {
     errors.push(`${where}: node không phải ending nhưng không có lựa chọn nào`);
+  } else if (!choices.some((choice) => !Object.keys(choice.requires || {}).length)) {
+    errors.push(`${where}: phải có ít nhất một lựa chọn không có requires (lối thoát bảo đảm)`);
+  }
+
+  if (!node.ending && !canFinish.has(id)) {
+    errors.push(`${where}: không có đường tới kết nào (bị kẹt hoặc lặp vô tận)`);
   }
 
   choices.forEach((choice, index) => {
