@@ -100,7 +100,9 @@ function choiceButton(choice, index) {
     .join(" · ");
   const meta = missing
     ? `Cần ${STAT_LABELS[missing.key]} ≥ ${missing.need} · bạn có ${missing.have}`
-    : effects;
+    : story.meta.showEffects === true
+      ? effects
+      : "";
 
   return `
     <button class="btn choice ${missing ? "locked" : ""}" data-choice="${index}" ${missing ? "disabled" : ""}>

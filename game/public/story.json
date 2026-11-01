@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "7 Cấp Bậc Kỹ Sư AI",
-    "start": "start"
+    "start": "start",
+    "showEffects": false
   },
   "stats": { "skill": 0, "money": 0, "stress": 0, "network": 0 },
   "nodes": {
