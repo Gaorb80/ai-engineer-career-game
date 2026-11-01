@@ -142,7 +142,7 @@ function renderNode() {
     </header>
     <main class="scene">
       <p class="kicker">// cấp ${pad(node.level)}/07 · ${esc(levelName(node.level))}</p>
-      ${delta ? `<p class="delta" aria-label="Thay đổi chỉ số"><span class="arrow">↳</span>${delta}</p>` : ""}
+      ${delta ? `<p class="delta" aria-label="Thay đổi chỉ số"><span class="arrow">&gt;</span>${delta}</p>` : ""}
       <h1>${esc(node.title)}</h1>
       <div class="text">${paragraphs(node.text)}</div>
       ${node.fact ? `<aside class="fact"><b>Số liệu theo video</b><p>${esc(node.fact)}</p></aside>` : ""}
