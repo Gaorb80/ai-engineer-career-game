@@ -1,3 +1,9 @@
 node_modules/
-story/source/*.mp4
+dist/
 *.log
+.venv/
+# Tài sản của video gốc: chỉ giữ ở máy, không đưa vào repo
+story/frames/
+story/sheets/
+story/transcript.md
+story/source/

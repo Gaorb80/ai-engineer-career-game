@@ -23,3 +23,11 @@ File: `game/public/story.json` (Claude sẽ ghi bản thật; OpenCode dùng b�
 }
 ```
 Quy tắc: node có `ending` thì `choices` rỗng. Mọi `next` phải tồn tại. Cần validator `npm run validate`.
+
+## Schema v2 (Claude yêu cầu, OpenCode triển khai)
+- `stats` là nguồn duy nhất của danh sách chỉ số: engine/validator lấy `Object.keys(story.stats)`, không hardcode.
+- `meta.statLabels`: nhãn hiển thị từng chỉ số (thiếu thì dùng tên key).
+- `meta.statMax`: trần thanh hiển thị, mặc định 10. `meta.showEffects`: mặc định false.
+- Chỉ số được phép âm. `requires` là ngưỡng tối thiểu của MỌI chỉ số liệt kê.
+- Node có thể có `fact` (chuỗi): hiển thị trong ô ghi chú riêng, tách khỏi lời truyện, dùng cho số liệu thật theo video.
+- Quy tắc validator: mỗi node không phải ending phải có ít nhất 1 lựa chọn không có `requires`; mọi node phải đi tới được một ending.
