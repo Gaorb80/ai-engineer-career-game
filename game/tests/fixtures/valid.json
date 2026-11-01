@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "title": "Fixture hợp lệ",
+    "start": "start",
+    "showEffects": false,
+    "statMax": { "skill": 10, "money": 10, "stress": 10, "network": 10 }
+  },
+  "stats": { "skill": 0, "money": 0, "stress": 0, "network": 0 },
+  "nodes": {
+    "start": {
+      "level": 1,
+      "title": "Bắt đầu",
+      "text": "Một đoạn văn mẫu.",
+      "choices": [
+        { "label": "Đi thẳng tới kết", "next": "ket", "effects": { "skill": 1 } },
+        {
+          "label": "Rẽ ngang khi đủ kỹ năng",
+          "next": "giua",
+          "effects": { "money": -2 },
+          "requires": { "skill": 5 }
+        }
+      ],
+      "ending": null
+    },
+    "giua": {
+      "level": 2,
+      "title": "Giữa đường",
+      "text": "Một đoạn văn mẫu.",
+      "choices": [{ "label": "Về kết", "next": "ket" }],
+      "ending": null
+    },
+    "ket": {
+      "level": 2,
+      "title": "Kết thúc",
+      "text": "Hết chuyện.",
+      "choices": [],
+      "ending": {
+        "type": "good",
+        "title": "Kết tốt",
+        "summary": "Tóm tắt kết.",
+        "source": "video"
+      }
+    }
+  }
+}
