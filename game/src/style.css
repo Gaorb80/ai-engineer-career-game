@@ -337,6 +337,26 @@ kbd {
 [data-k="network"] { --c: #b79cff; }
 [data-k="portfolio"] { --c: var(--clay); }
 
+.meter.warn .bar i {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.alert {
+  margin-top: 8px;
+  padding: 4px 10px;
+  border: 1px solid color-mix(in srgb, var(--bad) 50%, transparent);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--bad) 10%, transparent);
+  font: 0.74rem var(--mono);
+  color: var(--bad);
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
 /* ---------- Scene ---------- */
 .scene {
   animation: rise 0.4s ease both;

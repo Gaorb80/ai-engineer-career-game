@@ -51,6 +51,12 @@ for (const key of STAT_KEYS) {
 for (const key of Object.keys(story.meta?.statLabels || {})) {
   if (!STAT_KEYS.includes(key)) errors.push(`meta.statLabels.${key} không phải chỉ số hợp lệ`);
 }
+const overload = story.meta?.overload;
+if (overload != null) {
+  if (!STAT_KEYS.includes(overload.stat)) errors.push("meta.overload.stat không phải chỉ số hợp lệ");
+  if (typeof overload.at !== "number") errors.push("meta.overload.at phải là số");
+  if (!nodes[overload.next]?.ending) errors.push("meta.overload.next phải trỏ tới một node kết thúc");
+}
 if (!ids.length) errors.push("nodes đang rỗng");
 
 // BFS từ start để tìm node không tới được.

@@ -8,6 +8,8 @@ import {
   missingRequirement,
   applyChoice,
   diffStats,
+  resolveOverload,
+  nearOverload,
   loadRun,
   saveRun,
   clearRun,
@@ -74,9 +76,10 @@ function levelTrack(current) {
 
 function meter(key, value) {
   const max = statMax(story, key);
+  const warn = story.meta.overload?.stat === key && nearOverload(story, { [key]: value });
   const pct = Math.max(0, Math.min(100, (value / max) * 100));
   return `
-    <div class="meter ${value < 0 ? "neg" : ""}" data-k="${esc(key)}">
+    <div class="meter ${value < 0 ? "neg" : ""} ${warn ? "warn" : ""}" data-k="${esc(key)}">
       <div class="meter-head"><span>${esc(statLabel(story, key))}</span><b>${value}</b></div>
       <div class="bar"><i style="width:${pct}%"></i></div>
     </div>`;
@@ -139,6 +142,7 @@ function renderNode() {
       </div>
       ${levelTrack(node.level)}
       <section class="meters" aria-label="Chỉ số">${statKeys(story).map((key) => meter(key, state.stats[key] ?? 0)).join("")}</section>
+      ${nearOverload(story, state.stats) ? `<p class="alert" role="status">${esc(story.meta.overload.warning ?? "")}</p>` : ""}
     </header>
     <main class="scene">
       <p class="kicker">// cấp ${pad(node.level)}/07 · ${esc(levelName(node.level))}</p>
@@ -218,7 +222,7 @@ function choose(index) {
   const choice = story.nodes[state.nodeId]?.choices?.[index];
   if (!choice || missingRequirement(choice, state.stats)) return;
   const before = state.stats;
-  state = applyChoice(state, choice);
+  state = resolveOverload(story, applyChoice(state, choice));
   lastDelta = diffStats(before, state.stats);
   if (!story.nodes[state.nodeId]) return renderBroken();
   saveRun(state);

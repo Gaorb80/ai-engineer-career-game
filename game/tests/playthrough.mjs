@@ -13,6 +13,13 @@ if (!fs.existsSync(storyPath)) {
 }
 
 const story = JSON.parse(fs.readFileSync(storyPath, "utf-8"));
+
+// Chỉ số vượt ngưỡng meta.overload thì bị ép sang kết kiệt sức (trừ khi đã tới một kết).
+function overloadTarget(nodeId, stats) {
+  const o = story.meta.overload;
+  if (!o || stats[o.stat] < o.at || story.nodes[nodeId].ending) return nodeId;
+  return o.next;
+}
 const statKeys = Object.keys(story.stats);
 const endings = Object.keys(story.nodes).filter((id) => Boolean(story.nodes[id].ending));
 const allNodeIds = Object.keys(story.nodes);
@@ -102,11 +109,12 @@ while (head < queue.length) {
         if (k in nextStats) nextStats[k] += delta;
       }
 
-      const key = stateKey(choice.next, nextStats);
+      const dest = overloadTarget(choice.next, nextStats);
+      const key = stateKey(dest, nextStats);
       if (!visited.has(key)) {
         visited.add(key);
         queue.push({
-          nodeId: choice.next,
+          nodeId: dest,
           stats: nextStats,
           parentIdx: currIdx,
           choiceIdx: i,
@@ -197,7 +205,7 @@ for (let r = 0; r < SIM_RUNS; r++) {
     for (const [k, delta] of Object.entries(picked.effects || {})) {
       if (k in currStats) currStats[k] += delta;
     }
-    currNodeId = picked.next;
+    currNodeId = overloadTarget(picked.next, currStats);
   }
 
   simCounts[currNodeId] = (simCounts[currNodeId] || 0) + 1;

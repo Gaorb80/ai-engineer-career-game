@@ -5,6 +5,8 @@ import {
   missingRequirement,
   applyChoice,
   diffStats,
+  resolveOverload,
+  nearOverload,
   statKeys,
   statLabel,
   statMax,
@@ -98,4 +100,16 @@ test("localStorage ném lỗi thì đọc trả rỗng, ghi trả false, không 
   assert.deepEqual(loadEndings(), []);
   assert.equal(saveRun(createState(story)), false);
   assert.doesNotThrow(() => clearRun());
+});
+
+test("resolveOverload ép sang kết khi chỉ số chạm ngưỡng, trừ khi đã tới kết", () => {
+  const s = {
+    meta: { overload: { stat: "stress", at: 10, next: "ket-x" } },
+    nodes: { a: {}, "ket-x": { ending: {} }, "ket-y": { ending: {} } },
+  };
+  assert.equal(resolveOverload(s, { nodeId: "a", stats: { stress: 9 } }).nodeId, "a");
+  assert.equal(resolveOverload(s, { nodeId: "a", stats: { stress: 10 } }).nodeId, "ket-x");
+  assert.equal(resolveOverload(s, { nodeId: "ket-y", stats: { stress: 12 } }).nodeId, "ket-y");
+  assert.equal(nearOverload(s, { stress: 8 }), true);
+  assert.equal(nearOverload(s, { stress: 7 }), false);
 });

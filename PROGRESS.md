@@ -19,3 +19,7 @@ cd game; npm install; npm run dev (cổng 5173); npm test; npm run validate
 ## Kiểm thử độc lập (Antigravity, game/tests/playthrough.mjs)
 - 9/9 kết đạt được, 15/15 lựa chọn có requires khả thi, 0 node kẹt.
 - Phát hiện: kết caio/san-pham gần như không đạt được -> hạ ngưỡng 2 lần (l6-ngatu 10/5/7, l7-luong 7/8, l7-su-co 6, ra-ngoai 12/7, founder 6/4). Bot chơi có chủ đích: caio ~42%, bot lơ đãng ~10%.
+
+## Vòng độ khó (theo lượt chơi thử của Claude)
+- Thêm meta.overload (kiệt sức bắt buộc), 3 lựa chọn nghỉ ngơi, 3 bẫy (2 kết xấu mới), xoay thứ tự lựa chọn. 35 node, 11 kết, 12 test pass.
+- Bot có chủ đích: Kiệt sức 2-11%, Giám đốc AI 2-3%, Sản phẩm 20-50%. Cần người chơi thật để chỉnh tiếp.

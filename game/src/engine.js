@@ -29,6 +29,19 @@ export function applyChoice(state, choice) {
   return { nodeId: choice.next, stats, steps: state.steps + 1 };
 }
 
+// Chỉ số vượt ngưỡng kiệt sức: ép sang kết cấu hình trong meta.overload (trừ khi đã tới một kết).
+export function resolveOverload(story, state) {
+  const o = story.meta.overload;
+  if (!o || (state.stats[o.stat] ?? 0) < o.at || isEnding(story.nodes[state.nodeId])) return state;
+  return { ...state, nodeId: o.next };
+}
+
+// Chỉ số đang gần ngưỡng kiệt sức (còn <= 2 điểm).
+export const nearOverload = (story, stats) => {
+  const o = story.meta.overload;
+  return Boolean(o) && (stats[o.stat] ?? 0) >= o.at - 2;
+};
+
 // Chênh lệch chỉ số giữa hai trạng thái, bỏ các chỉ số không đổi.
 export function diffStats(before, after) {
   return Object.keys(after)
