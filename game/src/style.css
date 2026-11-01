@@ -206,15 +206,6 @@ kbd {
   border-bottom: 1px solid var(--line);
 }
 
-.hud-top {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--mono);
-  font-size: 0.76rem;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-
 .brand {
   color: var(--text);
 }
@@ -608,4 +599,62 @@ kbd {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* ---------- Đổi ngôn ngữ ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  font: 0.76rem var(--mono);
+  color: var(--muted);
+}
+
+.title .topbar,
+.scene > .topbar {
+  margin-bottom: 26px;
+}
+
+.topbar .brand {
+  margin-right: auto;
+}
+
+.lang {
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.lang button {
+  min-width: 36px;
+  min-height: 26px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: 600 0.72rem var(--mono);
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.lang button:hover,
+.lang button:focus-visible {
+  color: var(--text);
+  outline: none;
+}
+
+.lang button[aria-pressed="true"] {
+  background: var(--clay);
+  color: #1a0f0b;
+}
+
+/* Đổi ngôn ngữ giữa chừng: không chạy lại hiệu ứng vào cảnh */
+.still,
+.still * {
+  animation: none !important;
 }

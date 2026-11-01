@@ -7,7 +7,7 @@ const ENDING_TYPES = ["good", "bad", "neutral"];
 const SOURCES = ["video", "extended"];
 
 const arg = process.argv[2];
-const file = arg ? resolve(arg) : new URL("../public/story.json", import.meta.url);
+const file = arg ? resolve(arg) : new URL("../public/story.vi.json", import.meta.url);
 const errors = [];
 
 let story;

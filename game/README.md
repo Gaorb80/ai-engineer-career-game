@@ -1,33 +1,43 @@
-# Game engine — 7 Cấp Bậc Kỹ Sư AI
+# Game: engine và giao diện
 
-Visual novel dạng text, Vite + vanilla JS. Toàn bộ nội dung đọc từ `public/story.json`; code không chứa nội dung truyện.
+Visual novel dạng text, Vite + vanilla JS, không backend. Toàn bộ chữ (truyện và giao diện) đọc từ `public/story.<ngôn ngữ>.json`; code không chứa chữ nào của truyện. Giới thiệu sản phẩm ở `../README.md`.
 
 ## Lệnh
 
 ```sh
 npm install
-npm run validate   # kiểm tra story.json
-npm test           # test engine + validator (node:test, không cần dependency)
 npm run dev        # http://localhost:5173
 npm run build      # xuất dist/
-npm run preview    # xem bản build
+npm run validate   # kiểm tra từng bản truyện + hai bản ngôn ngữ khớp nhau
+npm test           # test engine, validator, độ khớp ngôn ngữ (node:test)
+node tests/playthrough.mjs   # duyệt không gian trạng thái, mô phỏng 20.000 lượt
 ```
+
+## Cấu trúc
+
+| File | Việc |
+|---|---|
+| `src/engine.js` | Luật chơi thuần logic: chỉ số theo `story.stats`, điều kiện, kiệt sức, lưu tiến trình |
+| `src/main.js` | Vẽ giao diện, bàn phím, đổi ngôn ngữ giữa chừng |
+| `src/style.css` | Giao diện tối, màu đất nung, serif cho truyện, monospace cho HUD |
+| `scripts/validate.js` | Kiểm tra một file truyện: `next` tồn tại, không kẹt, mọi node tới được kết |
+| `scripts/validate-locales.js` | Hai bản ngôn ngữ phải cùng id node, lựa chọn, hiệu ứng, điều kiện, placeholder |
+| `public/story.vi.json`, `story.en.json` | Nội dung (bản biên tập ở `../story/`) |
 
 ## Dữ liệu truyện
 
-Schema: `../docs/STORY_SCHEMA.md`. Bản trong `public/story.json` là **nội dung mẫu** (placeholder) để Claude thay bằng bản thật.
+Schema ở `../docs/STORY_SCHEMA.md`. Điểm cần nhớ:
 
-- `requires` = ngưỡng tối thiểu, ví dụ `{ "skill": 6 }` nghĩa là cần Kỹ năng ≥ 6. Lựa chọn chưa đủ bị khóa kèm lý do, không bị ẩn.
-- `effects` cộng dồn vào stats; chỉ số được phép âm (nợ, kiệt sức), thanh hiển thị chỉ kẹp trong khoảng 0..trần.
-- Hiệu ứng từng lựa chọn chỉ hiện khi `meta.showEffects: true`; bản mẫu để `false`. Lựa chọn bị khóa vẫn ghi "Cần X ≥ N".
-- Trần mỗi thanh lấy từ `meta.statMax` (ví dụ `{ "skill": 10 }`); thiếu key thì mặc định 10.
-- Node có `ending` không được có `choices`; `ending.source` là `video` (có trong video gốc) hoặc `extended` (mở rộng).
-- `image` là đường dẫn tương đối trong `public/` (ví dụ `"images/level-3.jpg"`), bỏ trống nếu không có ảnh.
+- `requires` là ngưỡng tối thiểu của mọi chỉ số liệt kê. Lựa chọn chưa đủ bị khóa kèm lý do, không bị ẩn.
+- Chỉ số được phép âm. Thanh hiển thị chỉ kẹp trong khoảng 0 tới `meta.statMax`.
+- `meta.showEffects: false` ẩn hiệu ứng từng lựa chọn. `meta.overload` ép sang kết kiệt sức khi một chỉ số chạm ngưỡng.
+- `fact` là ô số liệu theo video, tách khỏi lời truyện.
+- `meta.ui` chứa chữ giao diện, có `{placeholder}`; bản dịch phải giữ nguyên placeholder.
+
+## Đổi ngôn ngữ
+
+Chọn ở `LANGS` trong `src/main.js`. State (node, chỉ số) dùng chung giữa các ngôn ngữ nên đổi giữa chừng không mất tiến trình. Thêm ngôn ngữ: thêm `story.<mã>.json` cùng cấu trúc rồi thêm mã vào `LANGS`; `npm run validate` sẽ báo chỗ nào lệch.
 
 ## Lưu tiến trình
 
-`localStorage` key `ai-career-game:v1` giữ tiến trình lượt đang chơi (node hiện tại, stats); key `ai-career-game:endings` giữ danh sách kết đã mở, nên tới màn kết thì tiến trình bị xóa nhưng thư viện kết vẫn còn. Mọi thao tác lưu đều bọc `try/catch`; nếu trình duyệt chặn, game vẫn chơi được và hiện cảnh báo.
-
-## Kiểm tra trước khi merge
-
-`npm run validate` báo lỗi khi: `next` không tồn tại, node ending có `choices`, node không tới được từ `start`, node không có lối thoát không `requires`, node không đi tới được kết nào (kẹt hoặc lặp vô tận), thiếu trường bắt buộc, chỉ số lạ, `meta.statMax`/`meta.showEffects` sai kiểu. In danh sách kết ở cuối.
+`localStorage`: `ai-career-game:v2:run` (lượt đang chơi, xóa khi tới kết), `ai-career-game:v2:endings` (kết đã mở), `ai-career-game:lang` (ngôn ngữ). Mọi thao tác bọc `try/catch`; bị chặn thì vẫn chơi được.

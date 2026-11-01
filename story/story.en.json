@@ -1,0 +1,1009 @@
+{
+  "meta": {
+    "title": "7 Levels of an AI Engineer",
+    "start": "start",
+    "showEffects": false,
+    "tagline": "From exam score notification to the AI Director’s chair. Seven levels, many crossroads, and not every path leads to the top.",
+    "credit": "Data in this game is synthesized from an explanatory video on AI engineering careers by channel Cỏ Không Ngu, and may have changed over time. Characters and situations are fictional.",
+    "levelNames": [
+      "Student",
+      "Intern",
+      "Fresher",
+      "AI Engineer",
+      "Senior",
+      "Lead",
+      "Director"
+    ],
+    "statLabels": {
+      "skill": "Skill",
+      "money": "Finances",
+      "stress": "Stress",
+      "network": "Network",
+      "portfolio": "Real Projects"
+    },
+    "statMax": {
+      "skill": 22,
+      "money": 14,
+      "stress": 10,
+      "network": 12,
+      "portfolio": 12
+    },
+    "overload": {
+      "stat": "stress",
+      "at": 10,
+      "next": "ket-burnout",
+      "warning": "Approaching burnout. Find a way to rest before it’s too late."
+    },
+    "ui": {
+      "brand": "> 7_cap_bac",
+      "titleKicker": "// branching narrative · {n} endings",
+      "start": "Start",
+      "restart": "Restart from beginning",
+      "continue": "Continue · level {n}/07",
+      "library": "Endings Library · {got}/{total}",
+      "step": "step {n}",
+      "levelKicker": "// level {n}/07 · {name}",
+      "endKicker": "// ending · level {n}/07",
+      "factTitle": "Facts from the video",
+      "needs": "Requires {stat} ≥ {need} · you have {have}",
+      "endingLabels": {
+        "good": "Good Ending",
+        "bad": "Bad Ending",
+        "neutral": "Neutral Ending",
+        "other": "Ending"
+      },
+      "sourceLabels": {
+        "video": "From original video",
+        "extended": "Extended content"
+      },
+      "endStats": "{steps} choices · unlocked {got}/{total} endings",
+      "replay": "Play Again",
+      "libraryBtn": "Endings Library",
+      "home": "Home",
+      "libKicker": "// endings library",
+      "libTitle": "{got}/{total} endings unlocked",
+      "libLevel": "level {n}/07",
+      "locked": "Locked",
+      "lockedHint": "Keep playing to discover this ending.",
+      "backHome": "Back to Home",
+      "brokenTitle": "Story Data Mismatch",
+      "brokenText": "Current node no longer exists in story data. Please restart.",
+      "restartBtn": "Restart",
+      "deltaLabel": "Stat Changes",
+      "trackLabel": "Level Progression",
+      "statsLabel": "Stats",
+      "langLabel": "Language"
+    }
+  },
+  "stats": {
+    "skill": 0,
+    "money": 0,
+    "stress": 0,
+    "network": 0,
+    "portfolio": 0
+  },
+  "nodes": {
+    "start": {
+      "level": 1,
+      "title": "The Score Report",
+      "text": "Your journey begins with an exam score report. This year, getting into AI at top-tier universities leaves virtually zero room for error.\n\nYou stand before three doors. Any of them will open—the only difference is how much you have to pay and where you begin.",
+      "fact": "This year’s AI admission cutoff at an IT university under VNU-HCM reached 30/30. Hanoi University of Science and Technology (advanced Data Science & AI program) required 29.54.",
+      "choices": [
+        {
+          "label": "Standard program at a top university, around 41.8 million VND (about 1,600 USD) a year",
+          "next": "l1-hoc",
+          "effects": {
+            "money": -2,
+            "skill": 1
+          }
+        },
+        {
+          "label": "English-taught program, 64 to 80 million VND (about 2,450 to 3,080 USD) a year",
+          "next": "l1-hoc",
+          "effects": {
+            "money": -4,
+            "network": 1,
+            "skill": 1
+          }
+        },
+        {
+          "label": "Major in Computer Science first, then pivot to AI on your own",
+          "next": "l1-hoc",
+          "effects": {
+            "money": -1,
+            "stress": 1
+          }
+        }
+      ]
+    },
+    "l1-hoc": {
+      "level": 1,
+      "title": "What to Study Without Drowning",
+      "text": "The foundation is mathematics: linear algebra and probability. On top of that sits Python, followed by machine learning, deep learning, and large language models.\n\nWhat surprises you most is how machines learn. Traditional software runs on ‘if A then B’ rules. Machine learning works backward: you feed it tens of thousands of images, and let it discover the rules itself.",
+      "choices": [
+        {
+          "label": "Build a small Python project on your own in your freshman year",
+          "next": "l1-tien",
+          "effects": {
+            "skill": 1,
+            "portfolio": 1
+          }
+        },
+        {
+          "label": "Work part-time to pay rent, learning at whatever pace you can manage",
+          "next": "l1-tien",
+          "effects": {
+            "money": 1,
+            "stress": 1
+          }
+        },
+        {
+          "label": "Drill deep into foundational mathematics first",
+          "next": "l1-tien",
+          "effects": {
+            "skill": 2,
+            "stress": 1
+          }
+        }
+      ]
+    },
+    "l1-tien": {
+      "level": 1,
+      "title": "The Tuition Counter",
+      "text": "At this level, your income is zero. The tuition, however, is very real—and this is the only tier where you must pay money just to keep going.\n\nMultiply that over four years, without even counting food, rent, or a machine beefy enough to run heavy models. You calculate how to make ends meet.",
+      "fact": "According to the video: four years of university run around 170 to 270 million VND (about 6,500 to 10,400 USD), not including living expenses. Entrance exam scores are not the first thing employers ask for.",
+      "choices": [
+        {
+          "label": "Hunt for scholarships using your academic scores",
+          "next": "l2-tin",
+          "effects": {
+            "money": 2,
+            "skill": 1
+          },
+          "requires": {
+            "skill": 3
+          }
+        },
+        {
+          "label": "Take loans, work part-time, and cover most expenses yourself",
+          "next": "l2-tin",
+          "effects": {
+            "money": 1,
+            "stress": 2
+          }
+        },
+        {
+          "label": "Ask your family for support in exchange for a promise to take your studies seriously",
+          "next": "l2-tin",
+          "effects": {
+            "stress": 1
+          }
+        }
+      ]
+    },
+    "l2-tin": {
+      "level": 2,
+      "title": "Three Internship Postings",
+      "text": "By your third or fourth year, you knock on company doors looking for internships. This is when the glamorous buzzword ‘AI’ shows its true colors.\n\nThree job postings sit in front of you, with stipends leagues apart.",
+      "fact": "According to the video: one major corporation explicitly offers no stipend yet. A company in Hanoi pays around 5 million VND (about 190 USD) a month. A posting for 3rd and 4th-year students offers 7 to 12 million VND (about 270 to 460 USD).",
+      "choices": [
+        {
+          "label": "Major corporation, unpaid, but working with real production data",
+          "next": "l2-gannhan",
+          "effects": {
+            "money": -1,
+            "skill": 1,
+            "network": 1
+          }
+        },
+        {
+          "label": "Company in Hanoi, around 5 million VND (about 190 USD) a month",
+          "next": "l2-gannhan",
+          "effects": {
+            "money": 1,
+            "skill": 1
+          }
+        },
+        {
+          "label": "Position paying 7 to 12 million VND (about 270 to 460 USD) for final-year students",
+          "next": "l2-gannhan",
+          "effects": {
+            "money": 2,
+            "skill": 1
+          },
+          "requires": {
+            "skill": 4
+          }
+        }
+      ]
+    },
+    "l2-gannhan": {
+      "level": 2,
+      "title": "One Thousand Bounding Boxes",
+      "text": "Before touching PyTorch, YOLO, or OpenCV, you must gather images, clean data, and label datasets. A thousand photos mean drawing a thousand boxes around sagging power lines, tagging each: ‘this is a defect’.\n\nWithout clean data, even the sharpest algorithm learns the wrong lessons. The dullest task turns out to be the most critical one.",
+      "choices": [
+        {
+          "label": "Write a semi-automated labeling script to save manual drawing",
+          "next": "l2-hoso",
+          "effects": {
+            "skill": 2,
+            "portfolio": 1
+          }
+        },
+        {
+          "label": "Just rush through it and head home; nobody checks that closely anyway",
+          "next": "l2-hoso",
+          "effects": {
+            "stress": -1
+          }
+        },
+        {
+          "label": "Patiently clean and annotate the data all the way through",
+          "next": "l2-hoso",
+          "effects": {
+            "skill": 1,
+            "portfolio": 2,
+            "stress": 1
+          }
+        }
+      ]
+    },
+    "l2-hoso": {
+      "level": 2,
+      "title": "A Line on Your Resume",
+      "text": "As your internship wraps up, your mentor asks what you want to put on your resume. Stipend envelopes vary wildly, but you realize the most valuable reward is not inside any envelope.\n\nIt is the line you get to write on your resume: ‘Built a model running on real-world data.’ Keep that line—it will come back around soon.",
+      "fact": "According to the video: both are students doing AI, yet one earns 12 million VND (about 460 USD) a month while another gets zero. What truly lasts is real experience on your resume.",
+      "choices": [
+        {
+          "label": "Rely solely on your perfect 30/30 entrance score as your trump card",
+          "next": "l3-vao",
+          "effects": {
+            "stress": -1
+          }
+        },
+        {
+          "label": "Test the model on real data before anyone asks, and document the outcomes",
+          "next": "l3-vao",
+          "effects": {
+            "portfolio": 2,
+            "skill": 1
+          },
+          "requires": {
+            "skill": 4
+          }
+        },
+        {
+          "label": "Record exactly what you accomplished, nothing more and nothing less",
+          "next": "l3-vao",
+          "effects": {
+            "portfolio": 1
+          }
+        }
+      ]
+    },
+    "l3-vao": {
+      "level": 3,
+      "title": "The First Paycheck",
+      "text": "Holding your degree, you step out to job hunt and run straight into the paradox from the start of the video: companies face talent shortages, yet fresh graduates still struggle. The bar sounds reasonable: know Python, understand ML fundamentals, and have at least one project to show.\n\nThree offers arrive, and your portfolio decides where you land on the pay scale.",
+      "fact": "According to the video: starting monthly salary for entry-level AI engineers is typically 15 to 20 million VND (about 580 to 770 USD), with a broader range of 12 to 25 million VND (about 460 to 960 USD). A single month’s starting pay can almost match half a year of tuition.",
+      "choices": [
+        {
+          "label": "Small startup, around 15 million VND (about 580 USD), touching everything at once",
+          "next": "l3-chatbot",
+          "effects": {
+            "money": 1,
+            "skill": 2,
+            "stress": 1
+          }
+        },
+        {
+          "label": "Corporation, around 20 million VND (about 770 USD), structured processes",
+          "next": "l3-chatbot",
+          "effects": {
+            "money": 2,
+            "network": 1,
+            "skill": 1
+          }
+        },
+        {
+          "label": "Top end of the bracket thanks to a portfolio with live production projects",
+          "next": "l3-chatbot",
+          "effects": {
+            "money": 3,
+            "network": 1
+          },
+          "requires": {
+            "portfolio": 3
+          }
+        }
+      ]
+    },
+    "l3-chatbot": {
+      "level": 3,
+      "title": "Chatbot Hallucinates a Promotion",
+      "text": "Morning task: build a customer service chatbot aligned strictly with company policies. You write prompt templates, run hundreds of test questions, flag incorrect answers, refine prompts, and rerun.\n\nBy afternoon, someone alerts you that it just hallucinated a non-existent promotional discount. Back to square one. Most of your time goes into testing and patching, not inventing something brand new.",
+      "choices": [
+        {
+          "label": "Tell your team lead honestly that you need more time, then get to sleep on schedule",
+          "next": "l3-hai-kieu",
+          "effects": {
+            "stress": -3,
+            "network": 1
+          }
+        },
+        {
+          "label": "Build an automated evaluation suite of hundreds of questions to catch edge cases early",
+          "next": "l3-hai-kieu",
+          "effects": {
+            "skill": 2,
+            "portfolio": 1,
+            "stress": 1
+          }
+        },
+        {
+          "label": "Quickly patch the prompt and ship it to meet the deadline",
+          "next": "l3-hai-kieu",
+          "effects": {
+            "stress": 1
+          }
+        },
+        {
+          "label": "Stay up all night alone fixing everything until morning",
+          "next": "l3-hai-kieu",
+          "effects": {
+            "skill": 1,
+            "stress": 3
+          }
+        }
+      ]
+    },
+    "l3-hai-kieu": {
+      "level": 3,
+      "title": "Two Types of Engineers",
+      "text": "The title ‘AI engineer’ now wraps around many distinct jobs. The majority build product features on top of foundation models: making API calls, prompt engineering, hooking into corporate data, and verifying responses. Those who train proprietary models from raw data are often called Machine Learning Engineers.\n\nLike in a kitchen: some chefs use prepared stock, others simmer bone broth from scratch. Neither path is inferior. You need to pick a direction—or realize neither suits you.",
+      "choices": [
+        {
+          "label": "Applied AI Engineer: ship products using pre-trained foundation models",
+          "next": "l4-bien",
+          "effects": {
+            "portfolio": 1,
+            "money": 1
+          }
+        },
+        {
+          "label": "Machine Learning Engineer: train custom models from the ground up",
+          "next": "l4-bien",
+          "effects": {
+            "skill": 2,
+            "stress": 1
+          }
+        },
+        {
+          "label": "Realize you fit better elsewhere and ask for an internal transfer",
+          "next": "ket-chuyen-huong"
+        },
+        {
+          "label": "Third sleepless night in a row, you put your laptop down",
+          "next": "ket-burnout",
+          "requires": {
+            "stress": 6
+          }
+        }
+      ]
+    },
+    "l4-bien": {
+      "level": 4,
+      "title": "The 45 to 50 Million Signboard",
+      "text": "A few years into your career, you look back at that exact job posting from the start of the video: a company in Hanoi offering 45 to 50 million VND (about 1,700 to 1,900 USD) a month, full pay during probation, yet searching for months without filling the seats.\n\nReading the requirements, you see why: over three years of experience, a proven track record deploying AI into production, and English fluent enough to collaborate with US and Japanese partners. Three sensible criteria, but combined, they filter aggressively.",
+      "fact": "According to the video: plenty of people have the years of experience, but very few tick all three boxes. What the market lacks is not people who studied AI, but people who have made AI work in the real world. That single line from your internship resume was the very first cornerstone.",
+      "choices": [
+        {
+          "label": "Study English intensively for six months before making a move",
+          "next": "l4-luat",
+          "effects": {
+            "skill": 1,
+            "network": 1,
+            "stress": 1
+          }
+        },
+        {
+          "label": "Stay at your current company, progressing through the 30 to 60 million VND (about 1,150 to 2,300 USD) bracket for 2-4 years of experience",
+          "next": "l4-luat",
+          "effects": {
+            "money": 3
+          }
+        },
+        {
+          "label": "Accept a 70 million VND (about 2,700 USD) monthly offer from a company that hasn’t disclosed its project yet",
+          "next": "ket-bay-luong",
+          "effects": {
+            "money": 4
+          }
+        },
+        {
+          "label": "Submit your application for the 45 to 50 million VND (about 1,700 to 1,900 USD) role",
+          "next": "l4-phong-van",
+          "effects": {
+            "stress": 1
+          },
+          "requires": {
+            "skill": 8,
+            "portfolio": 4
+          }
+        }
+      ]
+    },
+    "l4-phong-van": {
+      "level": 4,
+      "title": "The Interview Room, Japanese Partners",
+      "text": "Their client contracts originate from the US and Japan, so they have no patience for candidates who only solve classroom problem sets. The two interviewers look straight at you and ask one question: ‘Have you ever shipped anything into the hands of real users?’",
+      "choices": [
+        {
+          "label": "Discuss your academic capstone and the theory you know inside out",
+          "next": "l4-luat",
+          "effects": {
+            "money": 2,
+            "stress": 1
+          }
+        },
+        {
+          "label": "Admit you haven’t shipped a live product yet, but ask for an opportunity to prove yourself",
+          "next": "l4-luat",
+          "effects": {
+            "skill": 1
+          }
+        },
+        {
+          "label": "Open your laptop and demo a product actively serving real users",
+          "next": "l4-luat",
+          "effects": {
+            "money": 4,
+            "network": 1
+          },
+          "requires": {
+            "portfolio": 5
+          }
+        }
+      ]
+    },
+    "l4-luat": {
+      "level": 4,
+      "title": "The AI Law Takes Effect",
+      "text": "Starting March 1 this year, Vietnam enacted its Artificial Intelligence Law. AI systems are categorized into three risk tiers: low, medium, and high. Providers must self-classify before deployment, and high-risk systems must undergo conformity assessments.\n\nYour credit scoring AI project falls under the high-risk tier. Your boss wants to skip the conformity assessment to meet the launch deadline.",
+      "fact": "According to the video: at this level, you don’t just ask whether the model runs fast—you also must ask who takes the blame when it gets things wrong.",
+      "choices": [
+        {
+          "label": "Stay silent and deploy anyway to meet the deadline",
+          "next": "l4-hau-qua",
+          "effects": {
+            "money": 1
+          }
+        },
+        {
+          "label": "Explicitly flag the risks and insist on completing the conformity assessment first",
+          "next": "l5-thiet-ke",
+          "effects": {
+            "skill": 1,
+            "stress": 2
+          }
+        },
+        {
+          "label": "Consult the legal compliance department to classify risks in full accordance with the law",
+          "next": "l5-thiet-ke",
+          "effects": {
+            "skill": 1,
+            "network": 1,
+            "stress": 1
+          }
+        }
+      ]
+    },
+    "l4-hau-qua": {
+      "level": 4,
+      "title": "Who Takes Responsibility?",
+      "text": "Three months later, the model mistakenly rejects thousands of loan applications due to an unvalidated data discrepancy. Customers file formal complaints, executives convene an emergency meeting, and all eyes turn toward whoever signed off on deployment.",
+      "choices": [
+        {
+          "label": "Step up, take ownership, fix the pipeline with the team, and report back",
+          "next": "l5-thiet-ke",
+          "effects": {
+            "stress": 3,
+            "skill": 1,
+            "network": 1
+          }
+        },
+        {
+          "label": "Blame the data team and the model vendor",
+          "next": "ket-quang-no"
+        }
+      ]
+    },
+    "l5-thiet-ke": {
+      "level": 5,
+      "title": "Architecting the Entire Pipeline",
+      "text": "After 5 to 8 years, you are a senior engineer. You no longer merely write your own piece of code. You architect the full lifecycle of an AI application—from data ingestion to user inference—and oversee production operations: monitoring data drift, latency decay, and scheduling retrains.",
+      "choices": [
+        {
+          "label": "Ship new features at breakneck speed to maintain momentum",
+          "next": "l5-doi-cu",
+          "effects": {
+            "money": 1,
+            "portfolio": 1,
+            "stress": 2
+          }
+        },
+        {
+          "label": "Lead a small squad and mentor junior engineers on best practices",
+          "next": "l5-doi-cu",
+          "effects": {
+            "network": 2,
+            "stress": 1
+          }
+        },
+        {
+          "label": "Take a one-week leave of absence and mute all notifications",
+          "next": "l5-doi-cu",
+          "effects": {
+            "stress": -3,
+            "money": -1
+          }
+        },
+        {
+          "label": "Build a unified quality monitoring platform for all live production models",
+          "next": "l5-doi-cu",
+          "effects": {
+            "skill": 2,
+            "portfolio": 1,
+            "stress": 1
+          }
+        }
+      ]
+    },
+    "l5-doi-cu": {
+      "level": 5,
+      "title": "Obsolescence in a Few Years",
+      "text": "This is the level where continuous unlearning and relearning peaks, because industry tooling evolves at breakneck speed. What you master today might become obsolete in just a few years.\n\nOn a Saturday night, a newly dropped library you have never touched is setting the entire industry abuzz.",
+      "choices": [
+        {
+          "label": "My old workflow works just fine; no need to chase hype",
+          "next": "ket-do-cu",
+          "effects": {
+            "money": 1
+          }
+        },
+        {
+          "label": "Dedicate every Saturday night to learning emerging tech from scratch",
+          "next": "l5-luong",
+          "effects": {
+            "skill": 2,
+            "stress": 1
+          }
+        },
+        {
+          "label": "Skim through tutorial videos to keep tabs on high-level concepts",
+          "next": "l5-luong",
+          "effects": {
+            "skill": 1
+          }
+        }
+      ]
+    },
+    "l5-luong": {
+      "level": 5,
+      "title": "Senior Compensation",
+      "text": "Senior salaries vary across reports, typically sitting between 55 and 80 million VND (about 2,100 to 3,100 USD) a month. Engineers with 7 to 10 years of experience in Ho Chi Minh City can reach 4,500 USD, around 118 million VND.\n\nYou also hear whispers that AI professionals enjoy a 5-year personal income tax exemption. It is real—but you must read the fine print.",
+      "fact": "According to the video: amended personal income tax regulations took effect on July 1 this year. Salaries derived from R&D or production of AI systems qualify for a 5-year tax holiday, provided the recipient qualifies as high-caliber digital tech talent—for instance, their average income over the last two years must exceed 5 times national GDP per capita, roughly over 52 million VND (about 2,000 USD) a month.",
+      "choices": [
+        {
+          "label": "Negotiate the top of the band, backing it up with evidence of shipped products",
+          "next": "l5-nga-re",
+          "effects": {
+            "money": 4,
+            "stress": 1
+          },
+          "requires": {
+            "skill": 12,
+            "portfolio": 7
+          }
+        },
+        {
+          "label": "Accept the standard market rate; stability is what counts",
+          "next": "l5-nga-re",
+          "effects": {
+            "money": 2
+          }
+        },
+        {
+          "label": "Trade part of your base salary for equity at an early-stage startup",
+          "next": "l5-nga-re",
+          "effects": {
+            "network": 1,
+            "portfolio": 1
+          }
+        }
+      ]
+    },
+    "l5-nga-re": {
+      "level": 5,
+      "title": "The Eight-Year Fork in the Road",
+      "text": "Reaching this stage, you face a critical fork: transition into people management, or drill ever deeper into technical expertise. After roughly eight years, the decision can no longer be deferred.",
+      "choices": [
+        {
+          "label": "Become an AI Team Lead",
+          "next": "l6-truong-nhom"
+        },
+        {
+          "label": "Become a Principal AI Specialist",
+          "next": "l6-chuyen-gia"
+        },
+        {
+          "label": "Resign and found your own AI company",
+          "next": "ket-founder",
+          "requires": {
+            "portfolio": 6,
+            "network": 4
+          }
+        },
+        {
+          "label": "Your body flashes red alerts. You take unpaid leave and never return",
+          "next": "ket-burnout",
+          "requires": {
+            "stress": 8
+          }
+        }
+      ]
+    },
+    "l6-truong-nhom": {
+      "level": 6,
+      "title": "A Day of Wall-to-Wall Meetings",
+      "text": "On the team lead track, your days fill with more meetings than lines of code: delegating tasks, recruiting, retaining talent, and taking the fall when your team’s AI model misleads thousands of customers.\n\nThe trade-off: your hands move away from the keyboard, and in a few years you might struggle to keep up with bleeding-edge tools.",
+      "choices": [
+        {
+          "label": "Mentor juniors and assign the right tasks to the right people",
+          "next": "l6-nha",
+          "effects": {
+            "network": 2
+          }
+        },
+        {
+          "label": "Personally rewrite critical modules to guarantee reliability",
+          "next": "l6-nha",
+          "effects": {
+            "skill": 1,
+            "stress": 2
+          }
+        },
+        {
+          "label": "Turn down extra projects to protect your health and family time",
+          "next": "l6-nha",
+          "effects": {
+            "stress": -3,
+            "network": -1
+          }
+        },
+        {
+          "label": "Take full accountability before clients and shield your team",
+          "next": "l6-nha",
+          "effects": {
+            "network": 2,
+            "stress": 2
+          }
+        }
+      ]
+    },
+    "l6-chuyen-gia": {
+      "level": 6,
+      "title": "The Sharpest Mind in the Room",
+      "text": "The principal specialist track involves minimal people management, but you must be the sharpest mind in the room in a domain like NLP or Computer Vision. A research focus typically demands a master’s or Ph.D., whereas product engineering does not strictly require one.\n\nThe trade-off: occasionally, an engineer you once mentored gets promoted to be your manager.",
+      "choices": [
+        {
+          "label": "Pursue a master’s or Ph.D. to dive deep into AI research",
+          "next": "l6-nha",
+          "effects": {
+            "skill": 3,
+            "money": -2
+          }
+        },
+        {
+          "label": "Stay in product engineering, mastering the domain you execute best",
+          "next": "l6-nha",
+          "effects": {
+            "skill": 2,
+            "portfolio": 2
+          }
+        },
+        {
+          "label": "Accept your former mentee as your boss and stay focused on your craft",
+          "next": "l6-nha",
+          "effects": {
+            "network": 1
+          }
+        }
+      ]
+    },
+    "l6-nha": {
+      "level": 6,
+      "title": "The Math of Buying a Home",
+      "text": "Management pay is substantial, but how long would it take to buy an apartment in Hanoi? Run the numbers: assume you live frugally and save half your take-home pay.\n\nThe calculator on your desk returns a sobering answer.",
+      "fact": "According to the video: AI management positions command 70 to 120 million VND (about 2,700 to 4,600 USD) a month or more. Saving 50 million VND (about 1,900 USD) each month, a 70 m² apartment at roughly 128 million VND/m² (about 4,900 USD/m²) totals nearly 9 billion VND (about 346,000 USD). It takes roughly 15 years of saving to buy outright without a mortgage.",
+      "choices": [
+        {
+          "label": "Take out a massive mortgage to buy the apartment before prices climb further",
+          "next": "ket-ganh-no"
+        },
+        {
+          "label": "Live frugally and channel every spare penny into your first home",
+          "next": "l6-ngatu",
+          "effects": {
+            "money": 2,
+            "stress": 1
+          }
+        },
+        {
+          "label": "Rent an apartment, reinvesting surplus cash into yourself and your professional network",
+          "next": "l6-ngatu",
+          "effects": {
+            "skill": 1,
+            "network": 1
+          }
+        },
+        {
+          "label": "Live moderately, prioritizing sustainable pacing for your health and family",
+          "next": "l6-ngatu",
+          "effects": {
+            "stress": -2
+          }
+        }
+      ]
+    },
+    "l6-ngatu": {
+      "level": 6,
+      "title": "The Chair Without a Timeline",
+      "text": "From that 30-point exam room to level 6, you have traveled twelve years including four years of university. Ahead lies level 7—a chair with no fixed timeline. Those who earn it have typically driven AI into real production at enterprise scale.\n\nYou gaze at the final step and ask yourself what you truly want.",
+      "choices": [
+        {
+          "label": "Step up onto the final threshold",
+          "next": "l7-ghe",
+          "requires": {
+            "skill": 10,
+            "network": 5,
+            "portfolio": 7
+          }
+        },
+        {
+          "label": "Stay at this level, excel at your craft, and live well",
+          "next": "ket-khong-moc"
+        },
+        {
+          "label": "Venture into global tech hubs where compensation follows entirely different rules",
+          "next": "ket-ra-ngoai",
+          "requires": {
+            "skill": 12,
+            "portfolio": 7
+          }
+        },
+        {
+          "label": "You are so thoroughly burned out you can no longer bear to look at the screen",
+          "next": "ket-burnout",
+          "requires": {
+            "stress": 8
+          }
+        }
+      ]
+    },
+    "l7-ghe": {
+      "level": 7,
+      "title": "Chief AI Officer",
+      "text": "Your job is no longer training models. You decide where the entire enterprise deploys AI, how many millions go into compute infrastructure, and how to structure teams. Every choice balances on one question: move faster than competitors, or build with greater certainty.",
+      "fact": "According to the video: a Vietnamese engineer under 35, with alumni experience at Google Brain, xAI, and OpenAI, took the seat of Head of AI Transformation at a major bank.",
+      "choices": [
+        {
+          "label": "Outrun the competition by hugging the bleeding edge of legal boundaries",
+          "next": "l7-su-co",
+          "effects": {
+            "money": 3,
+            "stress": 2
+          }
+        },
+        {
+          "label": "Uphold strict compliance and ethical standards, even if it slows you down",
+          "next": "l7-su-co",
+          "effects": {
+            "network": 1,
+            "skill": 1,
+            "stress": 1
+          }
+        },
+        {
+          "label": "Announce broad layoffs, replacing staff with AI to slash operating costs",
+          "next": "l7-su-co",
+          "effects": {
+            "money": 4,
+            "network": -3,
+            "stress": 2
+          }
+        },
+        {
+          "label": "Invest heavily in human talent and foundational infrastructure, accepting early lag",
+          "next": "l7-su-co",
+          "effects": {
+            "network": 2,
+            "money": 1
+          }
+        }
+      ]
+    },
+    "l7-su-co": {
+      "level": 7,
+      "title": "The Accountability Hearing",
+      "text": "An incident breaks out: the enterprise’s AI system produces erroneous outputs harming thousands of customers. The Ministry of Science and Technology has already launched a single-window portal and national AI database; regulators now have the teeth and tools to audit.\n\nThe person summoned to account before the board and regulatory authorities is you.",
+      "fact": "According to the video: the law also explicitly prohibits using AI to impersonate or simulate real persons and events to deceive or manipulate human cognition and behavior.",
+      "choices": [
+        {
+          "label": "Turn crisis into opportunity: explain the breakdown and institute enterprise-grade safeguards",
+          "next": "l7-luong",
+          "effects": {
+            "network": 2,
+            "skill": 1
+          },
+          "requires": {
+            "network": 6
+          }
+        },
+        {
+          "label": "Downplay the issue and disclose only what regulators specifically demand",
+          "next": "ket-quang-no"
+        },
+        {
+          "label": "Report transparently and accept your share of accountability",
+          "next": "l7-luong",
+          "effects": {
+            "network": 1,
+            "stress": 2
+          }
+        }
+      ]
+    },
+    "l7-luong": {
+      "level": 7,
+      "title": "The Ceiling",
+      "text": "An executive search agency slips you a compensation package. This is the ceiling, found only inside enterprise giants.\n\nDivided across roughly 176 working hours a month, each hour of your time is valued at over 2 million to nearly 4 million VND (about 80 to 150 USD). You stare at the sheet for a long time, then remember that single line from your internship resume all those years ago.",
+      "fact": "According to the video: an AI Director at a large corporation can make 15,000 to 25,000 USD a month—roughly 390 to 650 million VND—excluding bonuses, executive health coverage, and equity. Not every AI director reaches this pinnacle.",
+      "choices": [
+        {
+          "label": "Decline the offer and return to building a real product with your own hands",
+          "next": "ket-san-pham"
+        },
+        {
+          "label": "Sign the agreement to become Chief AI Officer for a major conglomerate",
+          "next": "ket-caio",
+          "requires": {
+            "network": 7,
+            "portfolio": 8
+          }
+        }
+      ]
+    },
+    "ket-caio": {
+      "level": 7,
+      "title": "The 650 Million VND Chair",
+      "text": "You settle into the executive chair whose salary figures make people look twice. Every strategic move you make impacts millions of users and hundreds of teammates.\n\nFrom that 30-point exam room to this desk took twelve years and an uncountable mountain of shipped work. If there is one lesson to take away, it remains that same old line: you built things that truly ran in the real world.",
+      "ending": {
+        "type": "good",
+        "title": "Chief AI Officer",
+        "summary": "You reached level 7 and command the industry’s highest compensation bracket in Vietnam, powered by a portfolio of battle-tested products and enduring relationships.",
+        "source": "video"
+      }
+    },
+    "ket-khong-moc": {
+      "level": 6,
+      "title": "A Chair With No Fixed Schedule",
+      "text": "You chose not to step up to level 7, and it turns out that is by no means a failure. The top seat follows no fixed schedule; some never pursue it, yet still build a career worthy of immense pride.\n\nYou remain one of the sharpest engineers in the room, earn a handsome living, and keep precious time for everything else life has to offer.",
+      "ending": {
+        "type": "neutral",
+        "title": "Mastery and Peace at Level 6",
+        "summary": "You chose to stay at level 6 as a Lead or Principal Specialist. As noted in the video, the top seat has no set milestone, and many live fulfilling careers without ever pursuing it.",
+        "source": "video"
+      }
+    },
+    "ket-san-pham": {
+      "level": 7,
+      "title": "What You Truly Wanted to Build",
+      "text": "You set the compensation letter down on the desk and write the opening lines of code for a brand-new product. It is something uniquely yours, built for a niche audience you genuinely care about helping.\n\nExam scores opened university gates, but career breakthroughs were always unlocked by shipping real things with your own hands. Deep down, you realize you have known that all along.",
+      "ending": {
+        "type": "good",
+        "title": "A Product of Your Own",
+        "summary": "You turned down an executive compensation ceiling to return to shipping real products, staying true to the central lesson of your journey.",
+        "source": "extended"
+      }
+    },
+    "ket-founder": {
+      "level": 5,
+      "title": "A Company of Your Own",
+      "text": "You hand in your resignation and co-found a boutique AI startup with two longtime friends. Your inaugural product is built on technology you battle-tested at your previous job, now shipped under your own banner.\n\nThere is no standardized pay scale on this road. Some months you lose sleep ensuring your team gets paid; other months you celebrate every freshly inked client contract. You are no longer climbing someone else’s ladder—you are building your own.",
+      "ending": {
+        "type": "good",
+        "title": "The Founder",
+        "summary": "A resume packed with production systems and a strong professional network provide the capital and confidence to launch your own AI enterprise.",
+        "source": "extended"
+      }
+    },
+    "ket-ra-ngoai": {
+      "level": 6,
+      "title": "The Global Arena",
+      "text": "You apply abroad and secure an offer from a world-class AI research lab. Compensation packages there inhabit an entirely different realm: elite young researchers pull in hundreds of millions of dollars over four-year grants.\n\nYou might not be at the very top of that ladder. But staring at numbers 200 times higher than the highest domestic ceiling, you understand why the most driven minds still venture abroad.",
+      "ending": {
+        "type": "good",
+        "title": "Venturing into Open Seas",
+        "summary": "You brought your expertise to the global arena, where compensation for top talent outpaces domestic peaks by dozens to hundreds of times.",
+        "source": "extended"
+      }
+    },
+    "ket-chuyen-huong": {
+      "level": 3,
+      "title": "A Pivot in Direction",
+      "text": "You realize tinkering with model architectures is not what gets you excited in the morning. What truly energizes you is understanding user needs and steering teams in the right direction. You request a lateral move into AI Product Management.\n\nLearning a discipline from scratch once more is never easy, but three years down the line, you know without a doubt that you made the right call.",
+      "ending": {
+        "type": "neutral",
+        "title": "A New Path",
+        "summary": "Recognizing that pure engineering was not your calling, you pivoted to an adjacent industry role, putting your hard-won technical grounding to excellent use.",
+        "source": "extended"
+      }
+    },
+    "ket-burnout": {
+      "level": 4,
+      "title": "Powering Down",
+      "text": "You pushed past your limits for too long—taking on too much work on far too little sleep. One morning you simply cannot pull yourself out of bed, and the doctor orders an extended medical leave.\n\nA fat salary cannot buy back broken health. By the time you return, you have changed, and the tech landscape has moved on too. You begin anew at a much gentler cadence.",
+      "ending": {
+        "type": "bad",
+        "title": "Burnout",
+        "summary": "Compounded exhaustion forced an abrupt halt midway through your career. Professional growth always levies a tax on physical well-being.",
+        "source": "extended"
+      }
+    },
+    "ket-do-cu": {
+      "level": 5,
+      "title": "Left Behind",
+      "text": "Two years later, junior colleagues finish in an afternoon what used to take you an entire week. Tooling in this field moves fast, and you stood still just as the track accelerated into overdrive.\n\nYou still have a job, but you are no longer the first person anyone consults.",
+      "ending": {
+        "type": "bad",
+        "title": "Left in the Dust",
+        "summary": "You stopped learning at level 5. What you mastered yesterday became obsolete tooling today.",
+        "source": "extended"
+      }
+    },
+    "ket-quang-no": {
+      "level": 4,
+      "title": "Legal Fallout",
+      "text": "Regulators initiate a formal investigation. Records reveal that a high-risk AI system was pushed into production without required conformity reviews, and you knew yet remained silent.\n\nYou lose your job, your reputation, and the trust of your peers. The looming question—‘who takes the fall when it hallucinates?’—now has a definitive answer: you.",
+      "ending": {
+        "type": "bad",
+        "title": "Bearing the Blame",
+        "summary": "You swept high-risk AI vulnerabilities under the rug and paid the price when catastrophe struck.",
+        "source": "extended"
+      }
+    },
+    "ket-bay-luong": {
+      "level": 4,
+      "title": "High Salary, Empty Resume",
+      "text": "For the first three months, everything looks idyllic: paychecks clear on time, modern offices glow bright. Then the venture abruptly runs dry, contracts get cancelled, and you realize you have shipped nothing of substance to real users. Your resume remains conspicuously blank right where recruiters look first.\n\nYou start over at a humbler compensation bracket, but this time you ask first: what will I actually get to build?",
+      "ending": {
+        "type": "bad",
+        "title": "The Salary Trap",
+        "summary": "You chased top-dollar pay without investigating what the project actually was. As the video reminds: when choosing an employer, don’t just ask how much they pay—ask what you will actually build.",
+        "source": "extended"
+      }
+    },
+    "ket-ganh-no": {
+      "level": 6,
+      "title": "The Apartment and the Mortgage",
+      "text": "The 70-square-meter apartment is finally yours, along with the heaviest mortgage commitment of your life. Then an industry-wide contraction strikes, and compensation resets downwards. You take on every grueling project that comes your way, unable to say no because the debt clock never stops ticking.\n\nThe math of fifteen years of patient saving never vanished—you merely borrowed against it early, paying the interest with your freedom.",
+      "ending": {
+        "type": "bad",
+        "title": "The Weight of a Roof",
+        "summary": "You took out a crushing mortgage to buy property early. As calculated in the video, it takes roughly 15 years of savings to afford a home outright without debt; borrowing early mortgaged away your freedom to choose your work.",
+        "source": "extended"
+      }
+    }
+  }
+}

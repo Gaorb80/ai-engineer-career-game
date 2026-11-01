@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="900" viewBox="0 0 1800 900" role="img" aria-labelledby="t d">
+  <title id="t">7 Cấp Bậc Kỹ Sư AI</title>
+  <desc id="d">Game chọn lựa rẽ nhánh: bảy cấp bậc từ sinh viên tới giám đốc AI, năm chỉ số, mười một cái kết, hai ngôn ngữ Việt và Anh.</desc>
+  <defs>
+    <linearGradient id="step" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E07A5A"/>
+      <stop offset="1" stop-color="#E07A5A" stop-opacity="0.18"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0" r="0.8">
+      <stop offset="0" stop-color="#E07A5A" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#E07A5A" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#1B1E24" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <style>
+    .serif { font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif; }
+    .mono { font-family: "Cascadia Code", Consolas, "SF Mono", monospace; }
+    .sans { font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+    .lvl { font-size: 24px; font-weight: 700; fill: #1A0F0B; text-anchor: middle; }
+    .name { font-size: 17px; fill: #8B909A; text-anchor: middle; }
+    .stat { font-size: 20px; fill: #9AA0AB; }
+  </style>
+
+  <rect width="1800" height="900" fill="#0B0C0E"/>
+  <rect width="1800" height="900" fill="url(#grid)"/>
+  <rect width="1800" height="900" fill="url(#glow)"/>
+
+  <text class="mono" x="90" y="130" font-size="26" fill="#E07A5A">// game chọn lựa · 11 cái kết · VI / EN</text>
+
+  <text class="serif" x="86" y="262" font-size="112" font-weight="700" fill="#ECE9E3">7 Cấp Bậc</text>
+  <text class="serif" x="86" y="382" font-size="112" font-weight="700" fill="#ECE9E3">Kỹ Sư AI</text>
+
+  <text class="serif" x="90" y="460" font-size="34" fill="#B8B4AC">Từ tờ giấy báo điểm tới chiếc ghế giám đốc AI.</text>
+  <text class="serif" x="90" y="508" font-size="34" fill="#B8B4AC">Bảy cấp bậc, nhiều ngã rẽ, không ngã nào chắc dẫn tới đỉnh.</text>
+  <text class="mono" x="90" y="568" font-size="23" fill="#8B909A">From an admission letter to the AI director's chair.</text>
+
+  <!-- bậc thang bảy cấp -->
+  <g>
+    <rect x="990"  y="640" width="92" height="80"  rx="6" fill="url(#step)" opacity="0.50"/>
+    <rect x="1094" y="570" width="92" height="150" rx="6" fill="url(#step)" opacity="0.58"/>
+    <rect x="1198" y="500" width="92" height="220" rx="6" fill="url(#step)" opacity="0.66"/>
+    <rect x="1302" y="430" width="92" height="290" rx="6" fill="url(#step)" opacity="0.74"/>
+    <rect x="1406" y="360" width="92" height="360" rx="6" fill="url(#step)" opacity="0.82"/>
+    <rect x="1510" y="290" width="92" height="430" rx="6" fill="url(#step)" opacity="0.91"/>
+    <rect x="1614" y="220" width="92" height="500" rx="6" fill="url(#step)"/>
+    <text class="lvl mono" x="1036" y="676">1</text>
+    <text class="lvl mono" x="1140" y="606">2</text>
+    <text class="lvl mono" x="1244" y="536">3</text>
+    <text class="lvl mono" x="1348" y="466">4</text>
+    <text class="lvl mono" x="1452" y="396">5</text>
+    <text class="lvl mono" x="1556" y="326">6</text>
+    <text class="lvl mono" x="1660" y="256">7</text>
+    <text class="name mono" x="1036" y="756">Sinh viên</text>
+    <text class="name mono" x="1140" y="756">Thực tập</text>
+    <text class="name mono" x="1244" y="756">Fresher</text>
+    <text class="name mono" x="1348" y="756">Kỹ sư AI</text>
+    <text class="name mono" x="1452" y="756">Senior</text>
+    <text class="name mono" x="1556" y="756">Lead</text>
+    <text class="name mono" x="1660" y="756">Giám đốc</text>
+    <path d="M1036 618 C1140 560 1244 490 1348 400 S1560 250 1654 176" fill="none" stroke="#5FD4C4" stroke-width="3" stroke-dasharray="3 12" stroke-linecap="round"/>
+    <circle cx="1348" cy="400" r="9" fill="#5FD4C4"/>
+    <circle cx="1654" cy="176" r="9" fill="none" stroke="#5FD4C4" stroke-width="3"/>
+    <text class="mono" x="1520" y="168" font-size="21" fill="#5FD4C4">390–650 triệu / tháng</text>
+  </g>
+
+  <!-- năm chỉ số -->
+  <g>
+    <text class="stat mono" x="90" y="690">Kỹ năng</text>
+    <rect x="90" y="702" width="260" height="8" rx="4" fill="#1A1D22"/><rect x="90" y="702" width="190" height="8" rx="4" fill="#5FD4C4"/>
+    <text class="stat mono" x="400" y="690">Tài chính</text>
+    <rect x="400" y="702" width="260" height="8" rx="4" fill="#1A1D22"/><rect x="400" y="702" width="120" height="8" rx="4" fill="#7EE2A8"/>
+    <text class="stat mono" x="710" y="690">Căng thẳng</text>
+    <rect x="710" y="702" width="200" height="8" rx="4" fill="#1A1D22"/><rect x="710" y="702" width="150" height="8" rx="4" fill="#FF7B7B"/>
+    <text class="stat mono" x="90" y="770">Quan hệ</text>
+    <rect x="90" y="782" width="260" height="8" rx="4" fill="#1A1D22"/><rect x="90" y="782" width="150" height="8" rx="4" fill="#B79CFF"/>
+    <text class="stat mono" x="400" y="770">Sản phẩm thật</text>
+    <rect x="400" y="782" width="260" height="8" rx="4" fill="#1A1D22"/><rect x="400" y="782" width="210" height="8" rx="4" fill="#E07A5A"/>
+  </g>
+
+  <!-- thẻ kết -->
+  <g class="mono" font-size="20">
+    <rect x="90" y="808" width="130" height="40" rx="20" fill="none" stroke="#7EE2A8"/><text x="155" y="835" fill="#7EE2A8" text-anchor="middle">4 kết tốt</text>
+    <rect x="232" y="808" width="150" height="40" rx="20" fill="none" stroke="#F0C674"/><text x="307" y="835" fill="#F0C674" text-anchor="middle">2 trung lập</text>
+    <rect x="394" y="808" width="130" height="40" rx="20" fill="none" stroke="#FF7B7B"/><text x="459" y="835" fill="#FF7B7B" text-anchor="middle">5 kết xấu</text>
+  </g>
+  <text class="mono" x="90" y="884" font-size="19" fill="#6B7079">chọn bằng phím 1–9 · bấm L để đổi Việt / Anh giữa chừng · chạy ngay trên trình duyệt</text>
+</svg>

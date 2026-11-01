@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "validate": "node scripts/validate.js",
+    "validate": "node scripts/validate.js public/story.vi.json && node scripts/validate.js public/story.en.json && node scripts/validate-locales.js",
     "test": "node --test"
   },
   "devDependencies": {
