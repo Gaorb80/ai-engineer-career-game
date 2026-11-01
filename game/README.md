@@ -17,7 +17,7 @@ npm run preview    # xem bản build
 Schema: `../docs/STORY_SCHEMA.md`. Bản trong `public/story.json` là **nội dung mẫu** (placeholder) để Claude thay bằng bản thật.
 
 - `requires` = ngưỡng tối thiểu, ví dụ `{ "skill": 6 }` nghĩa là cần Kỹ năng ≥ 6. Lựa chọn chưa đủ bị khóa kèm lý do, không bị ẩn.
-- `effects` cộng dồn vào stats, mỗi chỉ số không xuống dưới 0.
+- `effects` cộng dồn vào stats; chỉ số được phép âm (nợ, kiệt sức), thanh hiển thị chỉ kẹp trong khoảng 0..trần.
 - Hiệu ứng từng lựa chọn chỉ hiện khi `meta.showEffects: true`; bản mẫu để `false`. Lựa chọn bị khóa vẫn ghi "Cần X ≥ N".
 - Node có `ending` không được có `choices`; `ending.source` là `video` (có trong video gốc) hoặc `extended` (mở rộng).
 - `image` là đường dẫn tương đối trong `public/` (ví dụ `"images/level-3.jpg"`), bỏ trống nếu không có ảnh.

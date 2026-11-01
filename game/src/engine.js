@@ -35,7 +35,7 @@ export function missingRequirement(choice, stats) {
 export function applyChoice(state, choice) {
   const stats = { ...state.stats };
   for (const [key, delta] of Object.entries(choice.effects || {})) {
-    if (key in stats) stats[key] = Math.max(0, stats[key] + delta);
+    if (key in stats) stats[key] += delta;
   }
   return { ...state, stats, nodeId: choice.next };
 }

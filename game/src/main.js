@@ -85,7 +85,7 @@ function renderTitle() {
 }
 
 function statBar(key, value, cap) {
-  const pct = Math.min(100, (value / cap) * 100);
+  const pct = Math.min(100, Math.max(0, (value / cap) * 100));
   return `
     <div class="stat ${key}">
       <div class="stat-head"><span>${STAT_LABELS[key]}</span><b>${value}</b></div>
