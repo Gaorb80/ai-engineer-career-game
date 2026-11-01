@@ -18,4 +18,4 @@ cd game; npm install; npm run dev (cổng 5173); npm test; npm run validate
 
 ## Kiểm thử độc lập (Antigravity, game/tests/playthrough.mjs)
 - 9/9 kết đạt được, 15/15 lựa chọn có requires khả thi, 0 node kẹt.
-- Phát hiện: kết caio/san-pham gần như không đạt được -> hạ ngưỡng l6-ngatu, l7-luong, l7-su-co, ket-ra-ngoai. Kết caio tăng ~10 lần số trạng thái dẫn tới.
+- Phát hiện: kết caio/san-pham gần như không đạt được -> hạ ngưỡng 2 lần (l6-ngatu 10/5/7, l7-luong 7/8, l7-su-co 6, ra-ngoai 12/7, founder 6/4). Bot chơi có chủ đích: caio ~42%, bot lơ đãng ~10%.
