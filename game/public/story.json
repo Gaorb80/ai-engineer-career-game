@@ -226,9 +226,9 @@
       "title": "Chiếc ghế không có mốc năm",
       "text": "Từ phòng thi 30 điểm tới cấp 6, bạn đã đi khoảng 12 năm tính cả bốn năm đại học. Phía trước là cấp 7, chiếc ghế không có mốc năm. Người ngồi được thường là người từng đưa AI vào chạy thật ở quy mô cả một tổ chức.\n\nBạn nhìn bậc thang cuối cùng và tự hỏi mình muốn gì.",
       "choices": [
-        { "label": "Bước lên bậc cuối cùng", "next": "l7-ghe", "requires": { "skill": 14, "network": 7, "portfolio": 9 } },
+        { "label": "Bước lên bậc cuối cùng", "next": "l7-ghe", "requires": { "skill": 12, "network": 6, "portfolio": 8 } },
         { "label": "Ở lại cấp này, làm thật giỏi và sống thật tốt", "next": "ket-khong-moc" },
-        { "label": "Thử sức ở môi trường quốc tế, nơi trả lương theo cách khác hẳn", "next": "ket-ra-ngoai", "requires": { "skill": 17, "portfolio": 9 } },
+        { "label": "Thử sức ở môi trường quốc tế, nơi trả lương theo cách khác hẳn", "next": "ket-ra-ngoai", "requires": { "skill": 15, "portfolio": 8 } },
         { "label": "Bạn kiệt sức tới mức không nhìn nổi màn hình nữa", "next": "ket-burnout", "requires": { "stress": 8 } }
       ]
     },
@@ -250,7 +250,7 @@
       "fact": "Theo video: luật cũng cấm dùng AI giả mạo hay mô phỏng người thật, sự kiện thật để cố ý lừa dối, thao túng nhận thức và hành vi con người.",
       "choices": [
         { "label": "Giải trình trung thực, nhận phần trách nhiệm của mình", "next": "l7-luong", "effects": { "network": 1, "stress": 2 } },
-        { "label": "Biến sự cố thành cơ hội: giải trình rồi xây quy trình mới cho cả tổ chức", "next": "l7-luong", "effects": { "network": 2, "skill": 1 }, "requires": { "network": 9 } },
+        { "label": "Biến sự cố thành cơ hội: giải trình rồi xây quy trình mới cho cả tổ chức", "next": "l7-luong", "effects": { "network": 2, "skill": 1 }, "requires": { "network": 8 } },
         { "label": "Giảm nhẹ vấn đề, chỉ báo cáo những gì cơ quan quản lý hỏi", "next": "ket-quang-no" }
       ]
     },
@@ -260,7 +260,7 @@
       "text": "Một công ty cung ứng nhân sự gửi bạn bảng lương. Đây là mức trần, chỉ có ở những doanh nghiệp rất lớn.\n\nNếu chia cho khoảng 176 giờ làm mỗi tháng, mỗi giờ của bạn đáng giá từ hơn 2 triệu tới gần 4 triệu đồng. Bạn cầm tờ giấy nhìn rất lâu, rồi nhớ ra dòng chữ trong hồ sơ thực tập năm nào.",
       "fact": "Theo video: giám đốc AI ở doanh nghiệp lớn có thể nhận 15.000 đến 25.000 USD một tháng, tức khoảng 390 đến 650 triệu đồng, chưa kể thưởng, bảo hiểm và cổ phiếu. Không phải giám đốc AI nào cũng có mức này.",
       "choices": [
-        { "label": "Ký nhận gói giám đốc AI cho tập đoàn lớn", "next": "ket-caio", "requires": { "network": 10, "portfolio": 10 } },
+        { "label": "Ký nhận gói giám đốc AI cho tập đoàn lớn", "next": "ket-caio", "requires": { "network": 9, "portfolio": 9 } },
         { "label": "Từ chối, quay lại làm ra một sản phẩm thật bằng chính tay mình", "next": "ket-san-pham" }
       ]
     },
