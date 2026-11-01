@@ -7,6 +7,7 @@ Visual novel dạng text, Vite + vanilla JS. Toàn bộ nội dung đọc từ `
 ```sh
 npm install
 npm run validate   # kiểm tra story.json
+npm test           # test engine + validator (node:test, không cần dependency)
 npm run dev        # http://localhost:5173
 npm run build      # xuất dist/
 npm run preview    # xem bản build
