@@ -33,6 +33,46 @@
       "at": 10,
       "next": "ket-burnout",
       "warning": "Sắp kiệt sức. Hãy tìm cách nghỉ trước khi quá muộn."
+    },
+    "ui": {
+      "brand": "> 7_cap_bac",
+      "titleKicker": "// game chọn lựa · {n} cái kết",
+      "start": "Bắt đầu",
+      "restart": "Chơi lại từ đầu",
+      "continue": "Tiếp tục · cấp {n}/07",
+      "library": "Thư viện kết · {got}/{total}",
+      "step": "bước {n}",
+      "levelKicker": "// cấp {n}/07 · {name}",
+      "endKicker": "// kết thúc · cấp {n}/07",
+      "factTitle": "Số liệu theo video",
+      "needs": "Cần {stat} ≥ {need} · bạn có {have}",
+      "endingLabels": {
+        "good": "Kết tốt",
+        "bad": "Kết xấu",
+        "neutral": "Kết trung lập",
+        "other": "Kết thúc"
+      },
+      "sourceLabels": {
+        "video": "Theo video gốc",
+        "extended": "Nội dung mở rộng"
+      },
+      "endStats": "{steps} lựa chọn · đã mở {got}/{total} kết",
+      "replay": "Chơi lại",
+      "libraryBtn": "Thư viện kết",
+      "home": "Màn hình chính",
+      "libKicker": "// thư viện kết",
+      "libTitle": "{got}/{total} kết đã mở",
+      "libLevel": "cấp {n}/07",
+      "locked": "Chưa mở khóa",
+      "lockedHint": "Chơi tiếp để tìm kết này.",
+      "backHome": "Về màn hình chính",
+      "brokenTitle": "Dữ liệu truyện không khớp",
+      "brokenText": "Node hiện tại không còn trong dữ liệu truyện. Hãy bắt đầu lại.",
+      "restartBtn": "Bắt đầu lại",
+      "deltaLabel": "Thay đổi chỉ số",
+      "trackLabel": "Tiến trình cấp bậc",
+      "statsLabel": "Chỉ số",
+      "langLabel": "Ngôn ngữ"
     }
   },
   "stats": {

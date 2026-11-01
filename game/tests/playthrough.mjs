@@ -5,7 +5,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const storyPath = path.resolve(__dirname, "../public/story.json");
+const storyPath = path.resolve(__dirname, "../public/story.vi.json");
 
 if (!fs.existsSync(storyPath)) {
   console.error(`Không tìm thấy file story.json tại: ${storyPath}`);
