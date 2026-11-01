@@ -8,7 +8,9 @@ import {
   applyChoice,
   unlockEnding,
   loadState,
+  loadUnlocked,
   saveState,
+  clearState,
 } from "./engine.js";
 
 const ENDING_LABELS = { good: "Kết tốt", bad: "Kết xấu", neutral: "Kết trung lập" };
@@ -46,12 +48,14 @@ function allEndings() {
 }
 
 function unlockedSet() {
-  return new Set(state?.unlocked ?? saved?.unlocked ?? []);
+  return new Set(state?.unlocked ?? saved?.unlocked ?? loadUnlocked());
 }
 
 function persist() {
-  saved = state;
+  const finished = isEnding(story.nodes[state.nodeId]);
+  saved = finished ? null : state;
   if (!saveState(state)) storageBlocked = true;
+  if (finished) clearState();
 }
 
 function renderTitle() {
@@ -216,7 +220,7 @@ function renderBroken() {
 }
 
 function startRun(continueSaved) {
-  const keptUnlocked = state?.unlocked ?? saved?.unlocked ?? [];
+  const keptUnlocked = state?.unlocked ?? saved?.unlocked ?? loadUnlocked();
   if (continueSaved && saved && story.nodes[saved.nodeId]) {
     state = { nodeId: saved.nodeId, stats: { ...saved.stats }, unlocked: [...keptUnlocked] };
   } else {
@@ -286,7 +290,9 @@ async function boot() {
     return;
   }
 
+  // Save cũ trỏ tới màn kết hoặc node đã mất thì bỏ qua lượt chơi đó.
   if (saved && !story.nodes[saved.nodeId]) saved = null;
+  if (saved && isEnding(story.nodes[saved.nodeId])) saved = null;
   app.addEventListener("click", onClick);
   renderTitle();
 }

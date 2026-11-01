@@ -23,8 +23,8 @@ Schema: `../docs/STORY_SCHEMA.md`. Bản trong `public/story.json` là **nội d
 
 ## Lưu tiến trình
 
-`localStorage` key `ai-career-game:v1`: node hiện tại, stats, danh sách ending đã mở. Mọi thao tác lưu đều bọc `try/catch`; nếu trình duyệt chặn, game vẫn chơi được và hiện cảnh báo.
+`localStorage` key `ai-career-game:v1` giữ tiến trình lượt đang chơi (node hiện tại, stats); key `ai-career-game:endings` giữ danh sách kết đã mở, nên tới màn kết thì tiến trình bị xóa nhưng thư viện kết vẫn còn. Mọi thao tác lưu đều bọc `try/catch`; nếu trình duyệt chặn, game vẫn chơi được và hiện cảnh báo.
 
 ## Kiểm tra trước khi merge
 
-`npm run validate` báo lỗi khi: `next` không tồn tại, node ending có `choices`, node không tới được từ `start`, thiếu trường bắt buộc, chỉ số lạ. In danh sách kết ở cuối.
+`npm run validate` báo lỗi khi: `next` không tồn tại, node ending có `choices`, node không tới được từ `start`, node không có lối thoát không `requires`, node không đi tới được kết nào (kẹt hoặc lặp vô tận), thiếu trường bắt buộc, chỉ số lạ. In danh sách kết ở cuối.

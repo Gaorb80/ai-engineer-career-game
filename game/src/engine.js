@@ -8,6 +8,8 @@ export const STAT_LABELS = {
 };
 
 const STORAGE_KEY = "ai-career-game:v1";
+// Danh sách kết đã mở lưu riêng: xóa tiến trình ở màn kết không làm mất thư viện.
+const ENDINGS_KEY = "ai-career-game:endings";
 
 export function createState(story) {
   const stats = { skill: 0, money: 0, stress: 0, network: 0 };
@@ -44,26 +46,38 @@ export function unlockEnding(state, endingId) {
 }
 
 // localStorage có thể bị chặn (chế độ riêng tư) — mọi lỗi đều nuốt im lặng.
+export function loadUnlocked() {
+  try {
+    const list = JSON.parse(localStorage.getItem(ENDINGS_KEY) || "[]");
+    return Array.isArray(list) ? list : [];
+  } catch {
+    return [];
+  }
+}
+
 export function loadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     const saved = raw ? JSON.parse(raw) : null;
     if (!saved || typeof saved.nodeId !== "string" || !saved.stats) return null;
-    return { nodeId: saved.nodeId, stats: saved.stats, unlocked: saved.unlocked || [] };
+    return { nodeId: saved.nodeId, stats: saved.stats, unlocked: loadUnlocked() };
   } catch {
     return null;
   }
 }
 
+// Chỉ lưu tiến trình của lượt đang chơi. Kết đã mở luôn được ghi ở key riêng.
 export function saveState(state) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    localStorage.setItem(ENDINGS_KEY, JSON.stringify(state.unlocked || []));
     return true;
   } catch {
     return false;
   }
 }
 
+// Xóa tiến trình lượt chơi, giữ nguyên danh sách kết đã mở.
 export function clearState() {
   try {
     localStorage.removeItem(STORAGE_KEY);
