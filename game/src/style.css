@@ -658,3 +658,111 @@ kbd {
 .still * {
   animation: none !important;
 }
+
+/* ---------- Điện thoại: gọn lại để ít phải cuộn ---------- */
+@media (max-width: 639px) {
+  #app {
+    padding: 10px 14px calc(28px + env(safe-area-inset-bottom));
+  }
+  .hud {
+    margin: -10px -14px 12px;
+    padding: 8px 14px 8px;
+  }
+  .topbar {
+    margin-bottom: 6px;
+  }
+  .track {
+    margin-bottom: 8px;
+  }
+  .track i {
+    width: 18px;
+    height: 18px;
+    border-width: 1.5px;
+    font-size: 0.62rem;
+  }
+  .track li::before {
+    top: 8px;
+  }
+  .track .now i {
+    box-shadow: 0 0 0 3px var(--clay-dim);
+  }
+  .track span,
+  .track .now span {
+    display: none;
+  }
+  .meters {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .meter-head {
+    flex-direction: column;
+    font-size: 0.58rem;
+    line-height: 1.25;
+  }
+  .meter-head span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .meter-head b {
+    font-size: 0.78rem;
+  }
+  .bar {
+    height: 4px;
+    margin-top: 2px;
+  }
+  .alert {
+    margin-top: 6px;
+    padding: 3px 8px;
+    font-size: 0.68rem;
+    line-height: 1.35;
+  }
+  .scene .kicker {
+    margin-bottom: 4px;
+  }
+  .delta {
+    margin-bottom: 8px;
+  }
+  .scene h1 {
+    margin-bottom: 10px;
+    font-size: 1.45rem;
+    line-height: 1.2;
+  }
+  .text p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .fact {
+    margin: 12px 0 4px;
+    padding: 8px 10px;
+  }
+  .fact p {
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+  .choices {
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .choice {
+    min-height: 46px;
+    padding: 10px 12px;
+    border-radius: 10px;
+  }
+  .choice-label {
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+}
+
+/* Màn cảm ứng không có bàn phím: bỏ ô phím tắt và hiệu ứng hover */
+@media (hover: none) {
+  .choice kbd,
+  .btn kbd {
+    display: none;
+  }
+  .choice:hover:not(:disabled) {
+    transform: none;
+  }
+}
