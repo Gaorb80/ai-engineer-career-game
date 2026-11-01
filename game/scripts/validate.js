@@ -3,7 +3,6 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-const STAT_KEYS = ["skill", "money", "stress", "network"];
 const ENDING_TYPES = ["good", "bad", "neutral"];
 const SOURCES = ["video", "extended"];
 
@@ -19,6 +18,8 @@ try {
   process.exit(1);
 }
 
+// Danh sách chỉ số lấy từ story.stats (không hardcode).
+const STAT_KEYS = Object.keys(story.stats || {});
 const nodes = story.nodes && typeof story.nodes === "object" ? story.nodes : {};
 const ids = Object.keys(nodes);
 
@@ -43,8 +44,12 @@ if (story.meta?.statMax != null) {
 if (story.meta?.showEffects != null && typeof story.meta.showEffects !== "boolean") {
   errors.push("meta.showEffects phải là boolean");
 }
+if (!STAT_KEYS.length) errors.push("stats phải có ít nhất một chỉ số");
 for (const key of STAT_KEYS) {
-  if (typeof story.stats?.[key] !== "number") errors.push(`stats.${key} phải là số`);
+  if (typeof story.stats[key] !== "number") errors.push(`stats.${key} phải là số`);
+}
+for (const key of Object.keys(story.meta?.statLabels || {})) {
+  if (!STAT_KEYS.includes(key)) errors.push(`meta.statLabels.${key} không phải chỉ số hợp lệ`);
 }
 if (!ids.length) errors.push("nodes đang rỗng");
 
@@ -91,6 +96,7 @@ for (const [id, node] of Object.entries(nodes)) {
   }
   if (typeof node.title !== "string" || !node.title.trim()) errors.push(`${where}.title phải là chuỗi`);
   if (typeof node.text !== "string" || !node.text.trim()) errors.push(`${where}.text phải là chuỗi`);
+  if (node.fact != null && typeof node.fact !== "string") errors.push(`${where}.fact phải là chuỗi`);
   if (node.image != null && typeof node.image !== "string") errors.push(`${where}.image phải là chuỗi`);
 
   const choices = node.choices ?? [];

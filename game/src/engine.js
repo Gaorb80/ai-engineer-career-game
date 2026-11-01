@@ -1,29 +1,18 @@
-// Luật chơi thuần logic, không đụng vào DOM.
-export const STAT_KEYS = ["skill", "money", "stress", "network"];
-export const STAT_LABELS = {
-  skill: "Kỹ năng",
-  money: "Tiền",
-  stress: "Căng thẳng",
-  network: "Quan hệ",
-};
+// Luật chơi thuần logic, không đụng vào DOM. Chỉ số lấy hết từ story.stats.
+const RUN_KEY = "ai-career-game:v2:run";
+const ENDINGS_KEY = "ai-career-game:v2:endings";
 
-const STORAGE_KEY = "ai-career-game:v1";
-// Danh sách kết đã mở lưu riêng: xóa tiến trình ở màn kết không làm mất thư viện.
-const ENDINGS_KEY = "ai-career-game:endings";
+export const statKeys = (story) => Object.keys(story.stats);
+export const statLabel = (story, key) => story.meta.statLabels?.[key] ?? key;
+export const statMax = (story, key) => story.meta.statMax?.[key] ?? 10;
 
 export function createState(story) {
-  const stats = { skill: 0, money: 0, stress: 0, network: 0 };
-  for (const key of STAT_KEYS) {
-    if (typeof story.stats?.[key] === "number") stats[key] = story.stats[key];
-  }
-  return { nodeId: story.meta.start, stats, unlocked: [] };
+  return { nodeId: story.meta.start, stats: { ...story.stats }, steps: 0 };
 }
 
-export function isEnding(node) {
-  return Boolean(node && node.ending);
-}
+export const isEnding = (node) => Boolean(node?.ending);
 
-// Trả về yêu cầu chưa đạt đầu tiên, hoặc null nếu chọn được.
+// Yêu cầu chưa đạt đầu tiên, hoặc null nếu chọn được.
 export function missingRequirement(choice, stats) {
   for (const [key, need] of Object.entries(choice.requires || {})) {
     const have = stats[key] ?? 0;
@@ -37,51 +26,53 @@ export function applyChoice(state, choice) {
   for (const [key, delta] of Object.entries(choice.effects || {})) {
     if (key in stats) stats[key] += delta;
   }
-  return { ...state, stats, nodeId: choice.next };
+  return { nodeId: choice.next, stats, steps: state.steps + 1 };
 }
 
-export function unlockEnding(state, endingId) {
-  if (state.unlocked.includes(endingId)) return state;
-  return { ...state, unlocked: [...state.unlocked, endingId] };
+// Chênh lệch chỉ số giữa hai trạng thái, bỏ các chỉ số không đổi.
+export function diffStats(before, after) {
+  return Object.keys(after)
+    .map((key) => [key, after[key] - (before[key] ?? 0)])
+    .filter(([, d]) => d !== 0);
 }
 
-// localStorage có thể bị chặn (chế độ riêng tư) — mọi lỗi đều nuốt im lặng.
-export function loadUnlocked() {
+// localStorage có thể bị chặn (chế độ riêng tư): mọi lỗi đều nuốt im lặng.
+function read(key) {
   try {
-    const list = JSON.parse(localStorage.getItem(ENDINGS_KEY) || "[]");
-    return Array.isArray(list) ? list : [];
-  } catch {
-    return [];
-  }
-}
-
-export function loadState() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    const saved = raw ? JSON.parse(raw) : null;
-    if (!saved || typeof saved.nodeId !== "string" || !saved.stats) return null;
-    return { nodeId: saved.nodeId, stats: saved.stats, unlocked: loadUnlocked() };
+    return JSON.parse(localStorage.getItem(key));
   } catch {
     return null;
   }
 }
 
-// Chỉ lưu tiến trình của lượt đang chơi. Kết đã mở luôn được ghi ở key riêng.
-export function saveState(state) {
+function write(key, value) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    localStorage.setItem(ENDINGS_KEY, JSON.stringify(state.unlocked || []));
+    if (value == null) localStorage.removeItem(key);
+    else localStorage.setItem(key, JSON.stringify(value));
     return true;
   } catch {
     return false;
   }
 }
 
-// Xóa tiến trình lượt chơi, giữ nguyên danh sách kết đã mở.
-export function clearState() {
-  try {
-    localStorage.removeItem(STORAGE_KEY);
-  } catch {
-    // không lưu được thì thôi
-  }
+export function loadRun(story) {
+  const run = read(RUN_KEY);
+  if (!run || !story.nodes[run.nodeId] || !run.stats) return null;
+  return { nodeId: run.nodeId, stats: { ...story.stats, ...run.stats }, steps: run.steps ?? 0 };
+}
+
+export const saveRun = (state) => write(RUN_KEY, state);
+export const clearRun = () => write(RUN_KEY, null);
+
+export function loadEndings() {
+  const list = read(ENDINGS_KEY);
+  return Array.isArray(list) ? list : [];
+}
+
+export function unlockEnding(id) {
+  const list = loadEndings();
+  if (list.includes(id)) return list;
+  list.push(id);
+  write(ENDINGS_KEY, list);
+  return list;
 }

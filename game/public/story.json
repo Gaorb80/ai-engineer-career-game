@@ -3,280 +3,320 @@
     "title": "7 Cấp Bậc Kỹ Sư AI",
     "start": "start",
     "showEffects": false,
-    "statMax": { "skill": 10, "money": 10, "stress": 10, "network": 10 }
+    "tagline": "Từ tờ giấy báo điểm tới chiếc ghế giám đốc AI. Bảy cấp bậc, nhiều ngã rẽ, và không phải ngã nào cũng dẫn tới đỉnh.",
+    "credit": "Số liệu trong game tổng hợp theo một video giải thích nghề kỹ sư AI (kênh Cỏ Không Ngu), có thể đã thay đổi theo thời gian. Nhân vật và tình huống là hư cấu.",
+    "levelNames": ["Sinh viên", "Thực tập", "Fresher", "Kỹ sư AI", "Senior", "Lead", "Giám đốc"],
+    "statLabels": { "skill": "Kỹ năng", "money": "Tài chính", "stress": "Căng thẳng", "network": "Quan hệ", "portfolio": "Sản phẩm thật" },
+    "statMax": { "skill": 22, "money": 14, "stress": 10, "network": 12, "portfolio": 12 }
   },
-  "stats": { "skill": 0, "money": 0, "stress": 0, "network": 0 },
+  "stats": { "skill": 0, "money": 0, "stress": 0, "network": 0, "portfolio": 0 },
   "nodes": {
     "start": {
       "level": 1,
-      "title": "Ngày đầu tiên",
-      "text": "Bạn bước vào văn phòng của một công ty AI nhỏ với tấm thẻ thực tập sinh trên cổ. Sáu người trong nhóm đang cãi nhau về một mô hình vừa hỏng trên production.\n\nMentor của bạn ném cho bạn một đường link repo và nói: \"Chọn việc đi, ai cũng bắt đầu từ đâu đó.\"",
-      "image": null,
+      "title": "Tờ giấy báo điểm",
+      "text": "Hành trình của bạn bắt đầu từ một tờ giấy báo điểm. Năm nay, muốn vào ngành AI ở các trường đầu bảng thì gần như không được phép sai câu nào.\n\nBạn đứng trước ba cánh cửa. Cánh nào cũng mở được, chỉ khác nhau ở chuyện bạn phải trả bao nhiêu và bắt đầu từ đâu.",
+      "fact": "Điểm chuẩn ngành AI ở một trường CNTT thuộc ĐHQG TP.HCM năm nay là 30/30. Bách Khoa Hà Nội (chương trình tiên tiến Khoa học dữ liệu và AI) lấy 29,54.",
       "choices": [
-        {
-          "label": "Nhận bug nhỏ nhất trong backlog và tự sửa",
-          "next": "hoc-nhanh",
-          "effects": { "skill": 2, "stress": 1 }
-        },
-        {
-          "label": "Rủ mentor đi cà phê, hỏi thẳng về con đường sự nghiệp",
-          "next": "hoi-mentor",
-          "effects": { "network": 2, "skill": 1 }
-        }
-      ],
-      "ending": null
+        { "label": "Chương trình chuẩn của một trường top, khoảng 41,8 triệu một năm", "next": "l1-hoc", "effects": { "money": -2, "skill": 1 } },
+        { "label": "Chương trình dạy bằng tiếng Anh, từ 64 đến 80 triệu một năm", "next": "l1-hoc", "effects": { "money": -4, "network": 1, "skill": 1 } },
+        { "label": "Vào Khoa học máy tính trước, rồi tự rẽ sang AI", "next": "l1-hoc", "effects": { "money": -1, "stress": 1 } }
+      ]
     },
-    "hoc-nhanh": {
+    "l1-hoc": {
       "level": 1,
-      "title": "Đêm đầu tiên thức trắng",
-      "text": "Bạn đọc code tới 2 giờ sáng và tìm ra chỗ rò rỉ bộ nhớ. Pull request đầu tiên được merge với một dấu tick xanh.\n\nNhưng sáng hôm sau, buổi demo toàn công ty đang tới gần và chưa ai chuẩn bị gì.",
-      "image": null,
+      "title": "Học gì để không ngợp",
+      "text": "Móng nhà là toán: đại số tuyến tính và xác suất. Trên đó là Python, rồi mới tới học máy, học sâu và các mô hình ngôn ngữ lớn.\n\nĐiều làm bạn bỡ ngỡ nhất là cách máy học. Phần mềm thông thường chạy bằng luật “nếu A thì làm B”. Học máy đi ngược lại: bạn cho nó xem hàng chục nghìn tấm ảnh, rồi để nó tự rút ra quy luật.",
       "choices": [
-        {
-          "label": "Xung phong demo phần mình vừa sửa",
-          "next": "demo-som",
-          "effects": { "skill": 2, "money": 1, "stress": 1 }
-        },
-        {
-          "label": "Về ôn phỏng vấn, chuẩn bị đường lui",
-          "next": "on-thi",
-          "effects": { "skill": 3, "stress": 2 }
-        }
-      ],
-      "ending": null
+        { "label": "Cày chắc phần toán nền móng trước", "next": "l1-tien", "effects": { "skill": 2, "stress": 1 } },
+        { "label": "Tự làm một project Python nhỏ ngay từ năm nhất", "next": "l1-tien", "effects": { "skill": 1, "portfolio": 1 } },
+        { "label": "Đi làm thêm để có tiền trọ, học theo nhịp được tới đâu hay tới đó", "next": "l1-tien", "effects": { "money": 1, "stress": 1 } }
+      ]
     },
-    "hoi-mentor": {
+    "l1-tien": {
       "level": 1,
-      "title": "Một giờ cà phê đổi cả năm",
-      "text": "Mentor kể về lần anh ấy bị sa thải ở công ty thứ hai. \"Kỹ thuật chỉ là một nửa. Nửa còn lại là người ta có nhớ tên bạn không.\"\n\nAnh ấy gửi bạn lời mời vào nhóm dự án nội bộ đang thiếu người.",
-      "image": null,
+      "title": "Quầy thu học phí",
+      "text": "Ở cấp này, thu nhập của bạn là con số không. Học phí thì có thật, và đây là cấp duy nhất bạn phải trả tiền để được đi tiếp.\n\nNhân lên bốn năm, chưa tính tiền ăn, tiền trọ và một chiếc máy đủ khỏe để chạy mô hình nặng. Bạn tính cách xoay xở.",
+      "fact": "Theo video: bốn năm đại học là khoảng 170 đến 270 triệu đồng, chưa kể sinh hoạt phí. Điểm thi đầu vào chưa phải thứ nhà tuyển dụng hỏi đầu tiên.",
       "choices": [
-        {
-          "label": "Nhận lời vào nhóm, học cách làm việc với người khác",
-          "next": "lam-viec-nhom",
-          "effects": { "network": 2, "stress": 1 }
-        },
-        {
-          "label": "Xin mentor đứng tên chung một buổi demo",
-          "next": "demo-som",
-          "effects": { "skill": 1, "network": 1 }
-        }
-      ],
-      "ending": null
+        { "label": "Vay mượn, đi làm thêm, tự lo phần lớn", "next": "l2-tin", "effects": { "money": 1, "stress": 2 } },
+        { "label": "Xin gia đình hỗ trợ, đổi lại là lời hứa phải học cho ra học", "next": "l2-tin", "effects": { "stress": 1 } },
+        { "label": "Săn học bổng bằng điểm số của mình", "next": "l2-tin", "effects": { "money": 2, "skill": 1 }, "requires": { "skill": 3 } }
+      ]
     },
-    "demo-som": {
+    "l2-tin": {
       "level": 2,
-      "title": "Buổi demo quyết định",
-      "text": "Bạn đứng trước 30 người, tay run vì thiếu ngủ. Màn hình chiếu biểu đồ độ trễ giảm 40% sau bản vá của bạn.\n\nSếp kỹ thuật gật đầu. Sau buổi họp, một quản lý dự án hỏi bạn có muốn nhận một project khách hàng thật không.",
-      "image": null,
+      "title": "Ba tin tuyển thực tập",
+      "text": "Năm ba, năm tư, bạn đi gõ cửa từng chỗ thực tập. Đây là lúc chữ “AI” nghe rất sang bắt đầu lộ mặt thật.\n\nBa tin tuyển nằm trước mặt bạn, và phụ cấp chênh nhau rất xa.",
+      "fact": "Theo video: một tập đoàn lớn ghi thẳng là chưa hỗ trợ phụ cấp. Một công ty ở Hà Nội trả khoảng 5 triệu một tháng. Một tin dành cho sinh viên năm 3, năm 4 trả 7 đến 12 triệu.",
       "choices": [
-        {
-          "label": "Nhận project khách hàng, làm thật ăn thật",
-          "next": "nhan-project",
-          "effects": { "skill": 2, "money": 3, "stress": 2 }
-        },
-        {
-          "label": "Từ chối, ở lại học cho chắc đã",
-          "next": "on-thi",
-          "effects": { "skill": 2, "stress": 1 }
-        }
-      ],
-      "ending": null
+        { "label": "Tập đoàn lớn, chưa có phụ cấp, nhưng làm việc với dữ liệu thật", "next": "l2-gannhan", "effects": { "money": -1, "skill": 1, "network": 1 } },
+        { "label": "Công ty ở Hà Nội, khoảng 5 triệu một tháng", "next": "l2-gannhan", "effects": { "money": 1, "skill": 1 } },
+        { "label": "Vị trí 7 đến 12 triệu dành cho sinh viên năm cuối", "next": "l2-gannhan", "effects": { "money": 2, "skill": 1 }, "requires": { "skill": 4 } }
+      ]
     },
-    "on-thi": {
+    "l2-gannhan": {
       "level": 2,
-      "title": "Chuỗi ngày học 12 tiếng",
-      "text": "Bạn lập một lịch học kín từ 7 giờ sáng tới 11 giờ đêm: toán, hệ thống, phỏng vấn. Điện thoại tắt thông báo.\n\nBa tuần sau, bạn giỏi hơn thật. Nhưng bạn cũng không còn nhớ lần cuối mình ngủ đủ giấc là khi nào.",
-      "image": null,
+      "title": "Một nghìn lần khoanh",
+      "text": "Trước khi được động tới PyTorch, YOLO hay OpenCV, bạn phải thu thập ảnh, làm sạch dữ liệu rồi gán nhãn. Một nghìn tấm ảnh là một nghìn lần khoanh hộp quanh chỗ cáp bị võng, ghi chú “đây là lỗi”.\n\nKhông có dữ liệu sạch thì thuật toán xịn mấy cũng học sai. Việc chán nhất hóa ra là việc quan trọng nhất.",
       "choices": [
-        {
-          "label": "Vẫn nhận project lớn, vừa học vừa làm",
-          "next": "nhan-project",
-          "effects": { "skill": 1, "money": 1, "stress": 3 }
-        },
-        {
-          "label": "Dừng lại, xin nghỉ và rời ngành",
-          "next": "ket-burnout",
-          "effects": { "stress": -1, "money": 1 }
-        }
-      ],
-      "ending": null
+        { "label": "Kiên nhẫn làm sạch dữ liệu tới cùng", "next": "l2-hoso", "effects": { "skill": 1, "portfolio": 2, "stress": 1 } },
+        { "label": "Viết script gán nhãn bán tự động để đỡ phải khoanh tay", "next": "l2-hoso", "effects": { "skill": 2, "portfolio": 1 } },
+        { "label": "Làm cho xong rồi về, không ai kiểm tra kỹ đâu", "next": "l2-hoso", "effects": { "stress": -1 } }
+      ]
     },
-    "lam-viec-nhom": {
+    "l2-hoso": {
       "level": 2,
-      "title": "Nhóm sáu người, một deadline",
-      "text": "Nhóm dự án nội bộ chậm như rùa, nhưng bạn học được cách chia việc, viết tài liệu và nói \"không\" với yêu cầu vô lý.\n\nCuối quý, trưởng nhóm nghỉ việc. Cả nhóm nhìn về phía bạn.",
-      "image": null,
+      "title": "Dòng chữ trong hồ sơ",
+      "text": "Hết kỳ thực tập, người hướng dẫn hỏi bạn muốn ghi gì vào hồ sơ. Phong bì phụ cấp mỗi nơi một kiểu, nhưng bạn nhận ra thứ đáng giá nhất không nằm trong phong bì.\n\nNó là dòng chữ bạn được ghi vào hồ sơ: “Đã làm một mô hình chạy trên dữ liệu thật”. Giữ dòng đó lại, lát nữa nó sẽ quay về.",
+      "fact": "Theo video: cùng là sinh viên, cùng làm AI, người nhận 12 triệu một tháng, người nhận con số không. Điều đọng lại là kinh nghiệm thật trong hồ sơ.",
       "choices": [
-        {
-          "label": "Đứng ra nhận project khách hàng thay anh ấy",
-          "next": "nhan-project",
-          "effects": { "network": 2, "skill": 1 }
-        },
-        {
-          "label": "Từ chối, quay về học chuyên sâu",
-          "next": "on-thi",
-          "effects": { "skill": 2, "stress": 1 }
-        }
-      ],
-      "ending": null
+        { "label": "Chạy thử mô hình lên dữ liệu thật dù chưa ai yêu cầu, rồi ghi lại kết quả", "next": "l3-vao", "effects": { "portfolio": 2, "skill": 1 }, "requires": { "skill": 4 } },
+        { "label": "Ghi đúng những việc bạn đã làm, không hơn không kém", "next": "l3-vao", "effects": { "portfolio": 1 } },
+        { "label": "Chỉ khoe điểm đầu vào 30 điểm làm át chủ bài", "next": "l3-vao", "effects": { "stress": -1 } }
+      ]
     },
-    "nhan-project": {
+    "l3-vao": {
       "level": 3,
-      "title": "Kỹ sư chính thức",
-      "text": "Hợp đồng chính thức được ký. Bạn có một project khách hàng, một người review code và một buổi họp mỗi tuần với giám đốc.\n\nSáu tháng nữa, công ty mở một nhánh sản phẩm mới và cần người dẫn dắt kỹ thuật.",
-      "image": null,
+      "title": "Tháng lương đầu tiên",
+      "text": "Bạn cầm tấm bằng đi xin việc và gặp ngay nghịch lý ở đầu video: doanh nghiệp thiếu người, nhưng người mới ra trường vẫn chật vật. Yêu cầu nghe không cao: biết Python, nắm học máy cơ bản và có ít nhất một dự án để khoe.\n\nBa lời mời đến, và hồ sơ của bạn quyết định bạn đứng ở đâu trong khung lương.",
+      "fact": "Theo video: lương tháng đầu của kỹ sư AI mới vào nghề thường 15 đến 20 triệu, khung chung 12 đến 25 triệu. Một tháng lương đầu có khi gần bằng nửa năm học phí.",
       "choices": [
-        {
-          "label": "Nhận vai trò lead nhóm ba người",
-          "next": "lead-mini",
-          "effects": { "network": 3, "stress": 2 }
-        },
-        {
-          "label": "Từ chối quản lý, đào sâu vào kỹ thuật",
-          "next": "ic-expert",
-          "effects": { "skill": 3 },
-          "requires": { "skill": 6 }
-        }
-      ],
-      "ending": null
+        { "label": "Startup nhỏ, khoảng 15 triệu, được đụng vào nhiều thứ cùng lúc", "next": "l3-chatbot", "effects": { "money": 1, "skill": 2, "stress": 1 } },
+        { "label": "Tập đoàn, khoảng 20 triệu, quy trình chặt chẽ", "next": "l3-chatbot", "effects": { "money": 2, "network": 1, "skill": 1 } },
+        { "label": "Mức cao của khung nhờ hồ sơ có dự án chạy thật", "next": "l3-chatbot", "effects": { "money": 3, "network": 1 }, "requires": { "portfolio": 3 } }
+      ]
     },
-    "lead-mini": {
+    "l3-chatbot": {
+      "level": 3,
+      "title": "Chatbot bịa ra khuyến mãi",
+      "text": "Sáng nhận yêu cầu: làm chatbot trả lời khách đúng chính sách của công ty. Bạn viết câu lệnh, chạy vài trăm câu hỏi, đánh dấu câu nào nó trả lời sai, sửa rồi chạy lại.\n\nChiều có người báo nó vừa bịa ra một chương trình khuyến mãi không hề tồn tại. Thế là bạn quay về đầu. Phần lớn thời gian là kiểm tra và sửa, chứ không phải phát minh ra cái gì mới.",
+      "choices": [
+        { "label": "Dựng bộ test vài trăm câu hỏi để lần sau bắt lỗi sớm", "next": "l3-hai-kieu", "effects": { "skill": 2, "portfolio": 1, "stress": 1 } },
+        { "label": "Vá nhanh câu lệnh rồi bàn giao cho kịp giờ", "next": "l3-hai-kieu", "effects": { "stress": 1 } },
+        { "label": "Ở lại thức đêm một mình sửa hết mọi thứ", "next": "l3-hai-kieu", "effects": { "skill": 1, "stress": 3 } }
+      ]
+    },
+    "l3-hai-kieu": {
+      "level": 3,
+      "title": "Hai kiểu kỹ sư",
+      "text": "Chữ “kỹ sư AI” bây giờ gói nhiều kiểu việc. Phần đông làm tính năng sản phẩm trên các mô hình có sẵn: gọi qua mạng, viết câu lệnh, nối với dữ liệu công ty, rồi kiểm xem nó nói có đúng không. Người tự huấn luyện mô hình từ dữ liệu thường được gọi là kỹ sư học máy.\n\nNhư trong bếp: có đầu bếp dùng nước dùng đóng sẵn, có đầu bếp tự hầm xương từ đầu. Không kiểu nào thấp hơn kiểu nào. Bạn cần chọn hướng, hoặc nhận ra mình không hợp với cả hai.",
+      "choices": [
+        { "label": "Kỹ sư AI ứng dụng: làm sản phẩm trên mô hình có sẵn", "next": "l4-bien", "effects": { "portfolio": 1, "money": 1 } },
+        { "label": "Kỹ sư học máy: tự huấn luyện mô hình từ đầu", "next": "l4-bien", "effects": { "skill": 2, "stress": 1 } },
+        { "label": "Nhận ra mình hợp với việc khác hơn, xin chuyển vị trí", "next": "ket-chuyen-huong" },
+        { "label": "Đêm thứ ba liên tiếp không ngủ, bạn buông máy xuống", "next": "ket-burnout", "requires": { "stress": 6 } }
+      ]
+    },
+    "l4-bien": {
       "level": 4,
-      "title": "Tech lead lần đầu",
-      "text": "Bạn có ba người trong nhóm và không còn viết code một mình nữa. Thời gian trôi vào họp, review và trả lời tin nhắn.\n\nKỹ thuật của bạn chậm lại, nhưng sản phẩm thì chạy. Sếp bắt đầu nhắc tới một vị trí cao hơn.",
-      "image": null,
+      "title": "Tấm biển 45 đến 50 triệu",
+      "text": "Đi làm thêm vài năm, bạn quay lại đúng tấm biển tuyển dụng đầu bài: một công ty ở Hà Nội trả 45 đến 50 triệu một tháng, thử việc nhận đủ lương, mà tìm mấy tháng vẫn chưa đủ người.\n\nĐọc yêu cầu bạn hiểu vì sao: trên ba năm đi làm, từng đưa AI vào dự án thật, và tiếng Anh đủ tốt để làm với đối tác Mỹ, Nhật. Ba điều kiện nghe hợp lý, nhưng ghép lại lọc rất mạnh.",
+      "fact": "Theo video: người đủ số năm đi làm thì nhiều, nhưng đủ cả ba điều kiện thì ít. Thứ đang thiếu không phải người học AI, mà là người đã làm AI chạy thật. Dòng chữ trong hồ sơ thực tập chính là viên gạch đầu tiên.",
       "choices": [
-        {
-          "label": "Nhận quản lý hai nhóm, bước vào con đường lãnh đạo",
-          "next": "manager",
-          "effects": { "network": 3, "money": 2, "stress": 2 }
-        },
-        {
-          "label": "Quay lại làm chuyên gia kỹ thuật, bỏ quản lý",
-          "next": "ic-expert",
-          "effects": { "skill": 2, "network": 1 },
-          "requires": { "network": 4 }
-        }
-      ],
-      "ending": null
+        { "label": "Nộp hồ sơ vào vị trí 45 đến 50 triệu", "next": "l4-phong-van", "effects": { "stress": 1 }, "requires": { "skill": 8, "portfolio": 4 } },
+        { "label": "Học thêm tiếng Anh sáu tháng rồi tính", "next": "l4-luat", "effects": { "skill": 1, "network": 1, "stress": 1 } },
+        { "label": "Ở lại công ty cũ, đi tiếp mức 30 đến 60 triệu của người làm 2 đến 4 năm", "next": "l4-luat", "effects": { "money": 3 } }
+      ]
     },
-    "ic-expert": {
+    "l4-phong-van": {
+      "level": 4,
+      "title": "Phòng phỏng vấn, đối tác Nhật",
+      "text": "Đơn hàng của họ đến từ Mỹ và Nhật nên họ không nhận người chỉ quen làm bài tập. Hai người phỏng vấn nhìn thẳng vào bạn và hỏi một câu: “Bạn đã đưa cái gì tới tay người dùng thật chưa?”.",
+      "choices": [
+        { "label": "Mở máy, demo sản phẩm đang chạy cho người dùng thật", "next": "l4-luat", "effects": { "money": 4, "network": 1 }, "requires": { "portfolio": 5 } },
+        { "label": "Nói về đồ án và phần lý thuyết bạn nắm chắc", "next": "l4-luat", "effects": { "money": 2, "stress": 1 } },
+        { "label": "Thú nhận chưa có sản phẩm nào, nhưng xin được thử sức", "next": "l4-luat", "effects": { "skill": 1 } }
+      ]
+    },
+    "l4-luat": {
+      "level": 4,
+      "title": "Luật AI có hiệu lực",
+      "text": "Từ ngày 1 tháng 3 năm nay, Việt Nam có luật trí tuệ nhân tạo. Hệ thống AI chia ba mức rủi ro: thấp, trung bình, cao. Bên cung cấp phải tự phân loại trước khi triển khai, loại rủi ro cao còn phải qua đánh giá sự phù hợp.\n\nDự án của bạn chấm điểm hồ sơ vay vốn, thuộc loại rủi ro cao. Sếp muốn bỏ qua khâu đánh giá cho kịp deadline.",
+      "fact": "Theo video: ở cấp này, bạn không chỉ hỏi mô hình chạy có nhanh không, mà còn phải hỏi nếu nó nói sai thì ai chịu.",
+      "choices": [
+        { "label": "Báo cáo rõ rủi ro và đề nghị làm đánh giá sự phù hợp trước", "next": "l5-thiet-ke", "effects": { "skill": 1, "stress": 2 } },
+        { "label": "Nhờ bộ phận pháp chế giúp phân loại rủi ro đúng luật", "next": "l5-thiet-ke", "effects": { "skill": 1, "network": 1, "stress": 1 } },
+        { "label": "Im lặng, triển khai cho kịp hạn", "next": "l4-hau-qua", "effects": { "money": 1 } }
+      ]
+    },
+    "l4-hau-qua": {
+      "level": 4,
+      "title": "Ai chịu trách nhiệm?",
+      "text": "Ba tháng sau, mô hình từ chối nhầm hàng nghìn hồ sơ vay chỉ vì một lỗi dữ liệu không ai kiểm. Khách hàng khiếu nại, ban lãnh đạo họp khẩn, và mọi ánh mắt quay về phía người ký đưa mô hình vào chạy.",
+      "choices": [
+        { "label": "Đứng ra nhận trách nhiệm, cùng nhóm sửa và báo cáo lại", "next": "l5-thiet-ke", "effects": { "stress": 3, "skill": 1, "network": 1 } },
+        { "label": "Đổ lỗi cho nhóm dữ liệu và nhà cung cấp mô hình", "next": "ket-quang-no" }
+      ]
+    },
+    "l5-thiet-ke": {
       "level": 5,
-      "title": "Chuyên gia cấp cao",
-      "text": "Bạn không còn quản lý ai, nhưng cả công ty gọi tên bạn khi hệ thống gặp chuyện. Bạn viết những tài liệu mà người mới đọc như kinh thánh.\n\nCó hai lời mời đang nằm trong hộp thư: một hội nghị quốc tế và một startup vừa gọi được vốn.",
-      "image": null,
+      "title": "Vẽ cả con đường",
+      "text": "Sau 5 đến 8 năm bạn là senior. Bạn không còn làm mỗi phần việc của mình. Bạn vẽ toàn bộ đường đi của một ứng dụng AI, từ chỗ lấy dữ liệu tới chỗ trả kết quả cho người dùng, rồi lo vận hành sau khi đưa ra dùng: theo dõi xem nó có kém dần đi không, khi nào cần dạy lại.",
       "choices": [
-        {
-          "label": "Viết paper, mở nguồn framework của mình",
-          "next": "ket-principal",
-          "effects": { "skill": 2, "stress": 2 },
-          "requires": { "skill": 9 }
-        },
-        {
-          "label": "Nhận lời cố vấn cho startup",
-          "next": "ket-founder",
-          "effects": { "money": 2, "network": 1 },
-          "requires": { "network": 6 }
-        },
-        {
-          "label": "Giữ nhịp ổn định, làm chuyên gia cấp cao tới hưu",
-          "next": "ket-ic",
-          "effects": { "stress": -1 }
-        }
-      ],
-      "ending": null
+        { "label": "Dựng hệ thống giám sát chất lượng cho mọi mô hình đang chạy", "next": "l5-doi-cu", "effects": { "skill": 2, "portfolio": 1, "stress": 1 } },
+        { "label": "Ra tính năng mới thật nhanh để giữ tiến độ", "next": "l5-doi-cu", "effects": { "money": 1, "portfolio": 1, "stress": 2 } },
+        { "label": "Dẫn một nhóm nhỏ, truyền lại cách làm cho người mới", "next": "l5-doi-cu", "effects": { "network": 2, "stress": 1 } }
+      ]
     },
-    "manager": {
+    "l5-doi-cu": {
       "level": 5,
-      "title": "Quản lý hai nhóm",
-      "text": "Bạn không còn merge pull request. Bạn merge người: tuyển, giữ chân, và chịu trách nhiệm khi dự án trễ.\n\nGiám đốc AI của công ty sắp nghỉ. Trong danh sách người kế nhiệm có tên bạn, và cả tên người từng là mentor của bạn.",
-      "image": null,
+      "title": "Đồ cũ sau vài năm",
+      "text": "Đây là nấc phải học lại liên tục nhất, vì công cụ trong nghề đổi rất nhanh. Cái bạn giỏi nhất hôm nay, vài năm nữa có thể đã thành đồ cũ.\n\nTối thứ bảy, một thư viện mới bạn chưa đụng tới đang được cả ngành bàn tán.",
       "choices": [
-        {
-          "label": "Tranh vị trí giám đốc AI",
-          "next": "ket-director",
-          "effects": { "money": 3, "stress": 1 },
-          "requires": { "network": 6 }
-        },
-        {
-          "label": "Rời công ty, mở studio AI riêng",
-          "next": "ket-founder",
-          "effects": { "money": 2 },
-          "requires": { "money": 4 }
-        },
-        {
-          "label": "Ở lại làm quản lý tầm trung, sống bình yên",
-          "next": "ket-ic",
-          "effects": { "stress": -1 }
-        }
-      ],
-      "ending": null
+        { "label": "Dành mỗi tối thứ bảy học lại từ đầu", "next": "l5-luong", "effects": { "skill": 2, "stress": 1 } },
+        { "label": "Lướt qua vài video hướng dẫn cho biết", "next": "l5-luong", "effects": { "skill": 1 } },
+        { "label": "Mình làm cách cũ vẫn ổn, khỏi học", "next": "ket-do-cu", "effects": { "money": 1 } }
+      ]
     },
-    "ket-burnout": {
-      "level": 3,
-      "title": "Rời ngành trong im lặng",
-      "text": "Bạn nộp đơn nghỉ, trả laptop, và không nói với ai lý do thật. Sáu tháng sau bạn làm ở một công việc không liên quan, lương thấp hơn nhưng ngủ đủ giấc.\n\nĐôi khi bạn vẫn đọc tin về AI, rồi đóng tab.",
-      "image": null,
-      "choices": [],
-      "ending": {
-        "type": "bad",
-        "title": "Kết xấu: Bỏ cuộc vì kiệt sức",
-        "summary": "Bạn thắng về mặt kỹ thuật nhưng thua vì không ai dạy bạn cách giữ sức. Cấp bậc dừng ở Kỹ sư chính thức.",
-        "source": "extended"
-      }
+    "l5-luong": {
+      "level": 5,
+      "title": "Bảng lương cấp cao",
+      "text": "Lương senior tùy nguồn, rơi vào khoảng 55 đến 80 triệu một tháng. Người làm 7 đến 10 năm ở TP.HCM có thể chạm 4.500 USD, khoảng 118 triệu.\n\nBạn cũng nghe lời đồn làm AI được miễn thuế 5 năm. Có thật, nhưng phải đọc kỹ.",
+      "fact": "Theo video: thuế thu nhập cá nhân mới có hiệu lực từ 1/7 năm nay. Tiền lương từ dự án nghiên cứu, phát triển hoặc sản xuất hệ thống AI được miễn thuế 5 năm, nhưng người hưởng phải là nhân lực công nghệ số chất lượng cao, ví dụ thu nhập bình quân hai năm gần nhất phải gấp ít nhất 5 lần GDP bình quân đầu người, khoảng trên 52 triệu một tháng.",
+      "choices": [
+        { "label": "Đàm phán mức cao nhất, mang theo bằng chứng sản phẩm đã chạy", "next": "l5-nga-re", "effects": { "money": 4, "stress": 1 }, "requires": { "skill": 12, "portfolio": 7 } },
+        { "label": "Nhận mức thị trường, ổn định là được", "next": "l5-nga-re", "effects": { "money": 2 } },
+        { "label": "Đổi bớt lương lấy cổ phần ở một startup", "next": "l5-nga-re", "effects": { "network": 1, "portfolio": 1 } }
+      ]
     },
-    "ket-ic": {
-      "level": 7,
-      "title": "Chuyên gia không danh hiệu",
-      "text": "Bạn không lên chức, nhưng không ai thay được bạn. Mỗi sáng bạn đọc paper, mỗi chiều bạn sửa hệ thống, mỗi tối bạn về nhà đúng giờ.\n\nNhiều năm sau, một kỹ sư trẻ hỏi bạn bí quyết. Bạn nói: \"Chọn việc mình thấy vui, rồi đừng đổi.\"",
-      "image": null,
-      "choices": [],
-      "ending": {
-        "type": "neutral",
-        "title": "Kết trung lập: Sự nghiệp bền, không hào quang",
-        "summary": "Bạn đi hết bảy cấp bậc nhưng không chạm tới đỉnh. Đổi lại là một sự nghiệp dài, ổn định và ít tiếc nuối.",
-        "source": "video"
-      }
+    "l5-nga-re": {
+      "level": 5,
+      "title": "Ngã rẽ sau tám năm",
+      "text": "Lên tới đây, bạn đứng trước một ngã rẽ: đi tiếp bằng con đường quản người, hay đào thật sâu vào chuyên môn. Sau khoảng tám năm thì phải chọn thật.",
+      "choices": [
+        { "label": "Làm trưởng nhóm AI", "next": "l6-truong-nhom" },
+        { "label": "Làm chuyên gia chính", "next": "l6-chuyen-gia" },
+        { "label": "Nghỉ ngang, tự lập một công ty AI của riêng mình", "next": "ket-founder", "requires": { "portfolio": 8, "network": 5 } },
+        { "label": "Cơ thể báo động. Bạn xin nghỉ không lương và không quay lại", "next": "ket-burnout", "requires": { "stress": 8 } }
+      ]
     },
-    "ket-principal": {
-      "level": 7,
-      "title": "Principal Engineer",
-      "text": "Framework của bạn được dùng ở những công ty bạn chưa từng tới. Bạn đứng trên sân khấu hội nghị, và trong khán phòng có mentor cũ của bạn.\n\nCấp bậc cao nhất của nhánh kỹ thuật không phải là quản lý ai, mà là người khác không thể làm việc của bạn.",
-      "image": null,
-      "choices": [],
-      "ending": {
-        "type": "good",
-        "title": "Kết tốt: Đỉnh cao kỹ thuật",
-        "summary": "Bạn chọn con đường chuyên gia và đi tới cùng. Ảnh hưởng của bạn vượt khỏi công ty, đo bằng thứ người khác xây trên nền bạn đặt.",
-        "source": "video"
-      }
+    "l6-truong-nhom": {
+      "level": 6,
+      "title": "Một ngày toàn họp",
+      "text": "Trên con đường trưởng nhóm, ngày của bạn có nhiều cuộc họp hơn dòng mã: chia việc, tuyển người, giữ người, và đứng ra nhận lỗi khi sản phẩm AI của nhóm trả lời sai cho hàng nghìn khách.\n\nCái giá là tay bắt đầu xa bàn phím, mấy năm sau có khi không theo kịp công cụ mới.",
+      "choices": [
+        { "label": "Đứng ra nhận lỗi trước khách hàng và bảo vệ nhóm", "next": "l6-nha", "effects": { "network": 2, "stress": 2 } },
+        { "label": "Kèm cặp, chia việc đúng người đúng chỗ", "next": "l6-nha", "effects": { "network": 2 } },
+        { "label": "Tự tay viết lại những phần quan trọng cho chắc", "next": "l6-nha", "effects": { "skill": 1, "stress": 2 } }
+      ]
     },
-    "ket-director": {
+    "l6-chuyen-gia": {
+      "level": 6,
+      "title": "Giỏi nhất phòng",
+      "text": "Con đường chuyên gia chính ít quản người hơn, nhưng bạn phải là người giỏi nhất phòng ở một mảng, như xử lý ngôn ngữ hay nhìn ảnh. Hướng nghiên cứu thường cần thêm bằng thạc sĩ hoặc tiến sĩ, hướng làm sản phẩm thì không bắt buộc.\n\nCái giá: có lúc người bạn từng kèm cặp lại lên làm xếp của bạn.",
+      "choices": [
+        { "label": "Học tiếp lên thạc sĩ, tiến sĩ để đi sâu nghiên cứu", "next": "l6-nha", "effects": { "skill": 3, "money": -2 } },
+        { "label": "Ở lại sản phẩm, đào sâu một mảng bạn làm tốt nhất", "next": "l6-nha", "effects": { "skill": 2, "portfolio": 2 } },
+        { "label": "Chấp nhận người từng kèm cặp làm xếp, tập trung việc mình", "next": "l6-nha", "effects": { "network": 1 } }
+      ]
+    },
+    "l6-nha": {
+      "level": 6,
+      "title": "Phép tính mua nhà",
+      "text": "Lương quản lý đã rất cao, vậy bao lâu thì mua nổi một căn hộ ở Hà Nội? Thử làm một phép tính: cứ cho bạn sống tằn tiện để dành được một nửa.\n\nChiếc máy tính trên bàn trả lời hơi ngợp.",
+      "fact": "Theo video: vị trí quản lý mảng AI nhận từ 70 đến 120 triệu một tháng trở lên. Để dành 50 triệu mỗi tháng, căn 70 m² với giá khoảng 128 triệu/m² là gần 9 tỷ. Cần khoảng 15 năm dành dụm mới mua được nhà mà không phải vay.",
+      "choices": [
+        { "label": "Sống tằn tiện, dồn tiền cho căn nhà đầu tiên", "next": "l6-ngatu", "effects": { "money": 2, "stress": 1 } },
+        { "label": "Thuê nhà, dồn tiền đầu tư cho bản thân và các mối quan hệ", "next": "l6-ngatu", "effects": { "skill": 1, "network": 1 } },
+        { "label": "Sống vừa phải, giữ nhịp cho sức khỏe và gia đình", "next": "l6-ngatu", "effects": { "stress": -2 } }
+      ]
+    },
+    "l6-ngatu": {
+      "level": 6,
+      "title": "Chiếc ghế không có mốc năm",
+      "text": "Từ phòng thi 30 điểm tới cấp 6, bạn đã đi khoảng 12 năm tính cả bốn năm đại học. Phía trước là cấp 7, chiếc ghế không có mốc năm. Người ngồi được thường là người từng đưa AI vào chạy thật ở quy mô cả một tổ chức.\n\nBạn nhìn bậc thang cuối cùng và tự hỏi mình muốn gì.",
+      "choices": [
+        { "label": "Bước lên bậc cuối cùng", "next": "l7-ghe", "requires": { "skill": 14, "network": 7, "portfolio": 9 } },
+        { "label": "Ở lại cấp này, làm thật giỏi và sống thật tốt", "next": "ket-khong-moc" },
+        { "label": "Thử sức ở môi trường quốc tế, nơi trả lương theo cách khác hẳn", "next": "ket-ra-ngoai", "requires": { "skill": 17, "portfolio": 9 } },
+        { "label": "Bạn kiệt sức tới mức không nhìn nổi màn hình nữa", "next": "ket-burnout", "requires": { "stress": 8 } }
+      ]
+    },
+    "l7-ghe": {
       "level": 7,
       "title": "Giám đốc AI",
-      "text": "Bạn ngồi vào chiếc ghế từng thuộc về người bạn ngưỡng mộ. Ngân sách tính bằng triệu đô, quyết định tính bằng năm.\n\nHôm đầu tiên, bạn mở lại pull request đầu tiên mình từng viết, và tự nhủ đừng quên cảm giác đó.",
-      "image": null,
-      "choices": [],
-      "ending": {
-        "type": "good",
-        "title": "Kết tốt: Lãnh đạo quy mô lớn",
-        "summary": "Bạn đổi kỹ thuật lấy tầm ảnh hưởng. Thành công của bạn giờ được đo bằng số người được trao cơ hội, không phải số dòng code.",
-        "source": "extended"
-      }
+      "text": "Việc của bạn không còn là viết mô hình. Bạn quyết định cả tổ chức sẽ dùng AI vào việc gì, chi bao nhiêu tiền cho máy chủ, xây đội như thế nào. Mỗi quyết định đều đi qua một câu hỏi: nhanh hơn đối thủ, hay chắc chắn hơn đối thủ.",
+      "fact": "Theo video: có người Việt chưa tới 35 tuổi, từng làm ở Google Brain, xAI và OpenAI, đã ngồi ghế giám đốc khối chuyển đổi AI của một ngân hàng lớn.",
+      "choices": [
+        { "label": "Đầu tư vào đội ngũ và hạ tầng nền, chấp nhận chậm lúc đầu", "next": "l7-su-co", "effects": { "network": 2, "money": 1 } },
+        { "label": "Chạy nhanh hơn đối thủ, đi sát lằn ranh pháp lý", "next": "l7-su-co", "effects": { "money": 3, "stress": 2 } },
+        { "label": "Giữ chuẩn luật và đạo đức, dù có thể đi chậm hơn", "next": "l7-su-co", "effects": { "network": 1, "skill": 1, "stress": 1 } }
+      ]
+    },
+    "l7-su-co": {
+      "level": 7,
+      "title": "Cuộc họp giải trình",
+      "text": "Một sự cố xảy ra: hệ thống AI của tổ chức đưa ra kết quả sai làm ảnh hưởng nhiều khách hàng. Bộ Khoa học và Công nghệ đã có cổng thông tin một cửa và cơ sở dữ liệu quốc gia về hệ thống AI. Cơ quan quản lý giờ có công cụ để hỏi.\n\nNgười đứng ra giải trình với ban lãnh đạo và cơ quan quản lý là bạn.",
+      "fact": "Theo video: luật cũng cấm dùng AI giả mạo hay mô phỏng người thật, sự kiện thật để cố ý lừa dối, thao túng nhận thức và hành vi con người.",
+      "choices": [
+        { "label": "Giải trình trung thực, nhận phần trách nhiệm của mình", "next": "l7-luong", "effects": { "network": 1, "stress": 2 } },
+        { "label": "Biến sự cố thành cơ hội: giải trình rồi xây quy trình mới cho cả tổ chức", "next": "l7-luong", "effects": { "network": 2, "skill": 1 }, "requires": { "network": 9 } },
+        { "label": "Giảm nhẹ vấn đề, chỉ báo cáo những gì cơ quan quản lý hỏi", "next": "ket-quang-no" }
+      ]
+    },
+    "l7-luong": {
+      "level": 7,
+      "title": "Mức trần",
+      "text": "Một công ty cung ứng nhân sự gửi bạn bảng lương. Đây là mức trần, chỉ có ở những doanh nghiệp rất lớn.\n\nNếu chia cho khoảng 176 giờ làm mỗi tháng, mỗi giờ của bạn đáng giá từ hơn 2 triệu tới gần 4 triệu đồng. Bạn cầm tờ giấy nhìn rất lâu, rồi nhớ ra dòng chữ trong hồ sơ thực tập năm nào.",
+      "fact": "Theo video: giám đốc AI ở doanh nghiệp lớn có thể nhận 15.000 đến 25.000 USD một tháng, tức khoảng 390 đến 650 triệu đồng, chưa kể thưởng, bảo hiểm và cổ phiếu. Không phải giám đốc AI nào cũng có mức này.",
+      "choices": [
+        { "label": "Ký nhận gói giám đốc AI cho tập đoàn lớn", "next": "ket-caio", "requires": { "network": 10, "portfolio": 10 } },
+        { "label": "Từ chối, quay lại làm ra một sản phẩm thật bằng chính tay mình", "next": "ket-san-pham" }
+      ]
+    },
+    "ket-caio": {
+      "level": 7,
+      "title": "Chiếc ghế 650 triệu",
+      "text": "Bạn ngồi vào chiếc ghế mà nhiều người đọc lại hai lần con số. Mỗi quyết định của bạn chạm tới hàng triệu người dùng và hàng trăm đồng đội.\n\nTừ phòng thi 30 điểm tới đây, bạn mất khoảng mười hai năm cộng thêm một lượng việc không ai đếm được. Nếu phải rút ra một điều, nó vẫn là dòng chữ cũ: bạn đã làm ra thứ chạy thật.",
+      "ending": { "type": "good", "title": "Giám đốc AI", "summary": "Bạn chạm tới cấp 7 và nhận mức lương cao nhất của ngành ở Việt Nam, nhờ hồ sơ toàn sản phẩm thật và các mối quan hệ bền.", "source": "video" }
+    },
+    "ket-khong-moc": {
+      "level": 6,
+      "title": "Chiếc ghế không có lịch cố định",
+      "text": "Bạn không bước lên cấp 7, và hóa ra điều đó không phải thất bại. Chiếc ghế cuối cùng không có lịch cố định, có người cả đời không tới, mà vẫn có một nghề đáng tự hào.\n\nBạn vẫn là người giỏi bậc nhất trong phòng, vẫn có thu nhập tốt, vẫn có thời gian cho những việc khác trong đời.",
+      "ending": { "type": "neutral", "title": "Giỏi và bình yên ở cấp 6", "summary": "Bạn chọn dừng ở cấp 6 làm trưởng nhóm hoặc chuyên gia chính. Video cũng nói chiếc ghế cuối không có mốc năm và có người cả đời không tới.", "source": "video" }
+    },
+    "ket-san-pham": {
+      "level": 7,
+      "title": "Điều bạn thật sự muốn làm",
+      "text": "Bạn đặt tờ bảng lương xuống bàn và bắt đầu viết dòng mã đầu tiên của một sản phẩm mới. Đó là sản phẩm của riêng bạn, dành cho một nhóm người dùng nhỏ mà bạn thực sự muốn giúp.\n\nĐiểm số mở cánh cửa vào trường, còn cánh cửa vào công ty được mở bằng một sản phẩm thật do chính tay bạn làm ra. Bạn nhận ra mình đã biết điều đó từ lâu.",
+      "ending": { "type": "good", "title": "Sản phẩm của riêng bạn", "summary": "Bạn từ chối mức lương trần để quay về làm ra sản phẩm thật, đúng với bài học xuyên suốt của hành trình.", "source": "extended" }
     },
     "ket-founder": {
-      "level": 7,
-      "title": "Nhà sáng lập",
-      "text": "Studio của bạn có bốn người, một khách hàng lớn và vừa đủ tiền trả lương ba tháng. Bạn vừa là CTO, vừa là người đi mua cà phê.\n\nKhông ai biết trước được điều gì, kể cả bạn. Nhưng đây là lần đầu bạn thấy mình thực sự chịu trách nhiệm cho toàn bộ thứ mình xây.",
-      "image": null,
-      "choices": [],
-      "ending": {
-        "type": "good",
-        "title": "Kết tốt: Tự xây con đường riêng",
-        "summary": "Bạn rời cấp bậc công ty để tự định nghĩa thành công. Rủi ro cao, nhưng không còn ai quyết định thay bạn.",
-        "source": "extended"
-      }
+      "level": 5,
+      "title": "Công ty của riêng mình",
+      "text": "Bạn nộp đơn nghỉ và mở một công ty AI nhỏ cùng hai người bạn cũ. Sản phẩm đầu tiên là thứ đã chạy thật ở chỗ làm cũ, giờ mang thương hiệu của chính bạn.\n\nCon đường này không có bảng lương chuẩn. Có tháng bạn lo trả lương cho đồng đội, có tháng bạn thấy từng khách hàng mới ký hợp đồng. Bạn không còn leo thang cấp bậc nữa, bạn đang tự dựng một cái thang.",
+      "ending": { "type": "good", "title": "Người lập nghiệp", "summary": "Hồ sơ toàn sản phẩm thật cùng mạng lưới quan hệ cho bạn đủ vốn liếng để mở công ty AI của riêng mình.", "source": "extended" }
+    },
+    "ket-ra-ngoai": {
+      "level": 6,
+      "title": "Sân chơi của người giỏi nhất",
+      "text": "Bạn nộp hồ sơ ra nước ngoài và nhận được lời mời từ một phòng nghiên cứu hàng đầu. Mức đãi ngộ ở đó nằm trong một thế giới khác: có những nhà nghiên cứu trẻ nhận gói hàng trăm triệu đô la trong bốn năm.\n\nBạn không phải người ở đỉnh nhất. Nhưng nhìn con số gấp khoảng 200 lần mức trần ở nhà, bạn hiểu vì sao người giỏi vẫn chọn đi xa.",
+      "ending": { "type": "good", "title": "Ra biển lớn", "summary": "Bạn đưa kỹ năng ra môi trường quốc tế, nơi mức đãi ngộ cho người giỏi nhất cao gấp hàng chục tới hàng trăm lần trong nước.", "source": "extended" }
+    },
+    "ket-chuyen-huong": {
+      "level": 3,
+      "title": "Rẽ sang đường khác",
+      "text": "Bạn nhận ra viết mô hình không phải điều khiến mình hào hứng. Điều bạn thích là hiểu người dùng và giúp nhóm đi đúng hướng. Bạn xin chuyển sang làm quản lý sản phẩm cho mảng AI.\n\nHọc lại từ đầu một lần nữa không dễ, nhưng ba năm sau bạn thấy mình đã chọn đúng.",
+      "ending": { "type": "neutral", "title": "Con đường mới", "summary": "Bạn nhận ra mình không hợp với việc kỹ thuật thuần túy và rẽ sang vai trò khác trong ngành, vẫn dùng được những gì đã học.", "source": "extended" }
+    },
+    "ket-burnout": {
+      "level": 4,
+      "title": "Tắt máy",
+      "text": "Bạn đã gồng quá lâu, nhận quá nhiều việc và ngủ quá ít. Một sáng bạn không dậy nổi, và bác sĩ nói bạn cần nghỉ dài.\n\nKhoản lương cao không cứu được bạn. Khi quay lại, bạn đã khác, và ngành này cũng đã khác. Bạn bắt đầu lại từ một nhịp chậm hơn nhiều.",
+      "ending": { "type": "bad", "title": "Kiệt sức", "summary": "Căng thẳng tích tụ khiến bạn phải dừng giữa chừng. Tăng trưởng nghề nghiệp nào cũng có cái giá về sức khỏe.", "source": "extended" }
+    },
+    "ket-do-cu": {
+      "level": 5,
+      "title": "Đồ cũ",
+      "text": "Hai năm sau, đồng nghiệp trẻ làm trong một buổi chiều những việc bạn làm mất cả tuần. Công cụ trong nghề đổi nhanh, và bạn đã đứng yên đúng lúc đường chạy nhanh nhất.\n\nBạn vẫn có việc, nhưng không còn là người được hỏi ý kiến đầu tiên.",
+      "ending": { "type": "bad", "title": "Bị bỏ lại", "summary": "Bạn dừng học ở cấp 5. Cái bạn giỏi nhất hôm nay vài năm nữa có thể đã thành đồ cũ.", "source": "extended" }
+    },
+    "ket-quang-no": {
+      "level": 4,
+      "title": "Hậu quả pháp lý",
+      "text": "Cơ quan quản lý vào cuộc. Hồ sơ cho thấy hệ thống rủi ro cao đã được đưa vào chạy mà không qua đánh giá, và bạn là người biết mà không nói.\n\nBạn mất việc, danh tiếng và sự tin tưởng của đồng nghiệp. Câu hỏi “nếu nó nói sai thì ai chịu?” có câu trả lời, và là bạn.",
+      "ending": { "type": "bad", "title": "Người chịu trách nhiệm", "summary": "Bạn che giấu rủi ro của một hệ thống AI và phải trả giá khi sự cố xảy ra.", "source": "extended" }
     }
   }
 }

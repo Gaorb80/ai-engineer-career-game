@@ -3,6 +3,9 @@
     "title": "7 Cấp Bậc Kỹ Sư AI",
     "start": "start",
     "showEffects": false,
+    "tagline": "Từ tờ giấy báo điểm tới chiếc ghế giám đốc AI. Bảy cấp bậc, nhiều ngã rẽ, và không phải ngã nào cũng dẫn tới đỉnh.",
+    "credit": "Số liệu trong game tổng hợp theo một video giải thích nghề kỹ sư AI (kênh Cỏ Không Ngu), có thể đã thay đổi theo thời gian. Nhân vật và tình huống là hư cấu.",
+    "levelNames": ["Sinh viên", "Thực tập", "Fresher", "Kỹ sư AI", "Senior", "Lead", "Giám đốc"],
     "statLabels": { "skill": "Kỹ năng", "money": "Tài chính", "stress": "Căng thẳng", "network": "Quan hệ", "portfolio": "Sản phẩm thật" },
     "statMax": { "skill": 22, "money": 14, "stress": 10, "network": 12, "portfolio": 12 }
   },
