@@ -30,6 +30,19 @@ if (!story.meta?.start) {
 } else if (!nodes[story.meta.start]) {
   errors.push(`meta.start trỏ tới node không tồn tại: ${story.meta.start}`);
 }
+if (story.meta?.statMax != null) {
+  if (typeof story.meta.statMax !== "object" || Array.isArray(story.meta.statMax)) {
+    errors.push("meta.statMax phải là object { chỉ số: trần }");
+  } else {
+    for (const [key, max] of Object.entries(story.meta.statMax)) {
+      if (!STAT_KEYS.includes(key)) errors.push(`meta.statMax.${key} không phải chỉ số hợp lệ`);
+      else if (typeof max !== "number" || max <= 0) errors.push(`meta.statMax.${key} phải là số > 0`);
+    }
+  }
+}
+if (story.meta?.showEffects != null && typeof story.meta.showEffects !== "boolean") {
+  errors.push("meta.showEffects phải là boolean");
+}
 for (const key of STAT_KEYS) {
   if (typeof story.stats?.[key] !== "number") errors.push(`stats.${key} phải là số`);
 }

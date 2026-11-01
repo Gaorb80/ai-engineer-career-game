@@ -84,7 +84,13 @@ function renderTitle() {
   window.scrollTo(0, 0);
 }
 
-function statBar(key, value, cap) {
+function statCap(key) {
+  const max = story.meta?.statMax?.[key];
+  return typeof max === "number" && max > 0 ? max : 10;
+}
+
+function statBar(key, value) {
+  const cap = statCap(key);
   const pct = Math.min(100, Math.max(0, (value / cap) * 100));
   return `
     <div class="stat ${key}">
@@ -121,8 +127,6 @@ function renderNode() {
     return renderEnding(node);
   }
 
-  const cap = Math.max(10, ...STAT_KEYS.map((key) => state.stats[key] || 0));
-
   app.innerHTML = `
     <header class="hud">
       <div class="hud-top">
@@ -137,7 +141,7 @@ function renderNode() {
           .join("")}
       </ol>
       <section class="stats" aria-label="Chỉ số">
-        ${STAT_KEYS.map((key) => statBar(key, state.stats[key] || 0, cap)).join("")}
+        ${STAT_KEYS.map((key) => statBar(key, state.stats[key] || 0)).join("")}
       </section>
     </header>
     <main class="scene">

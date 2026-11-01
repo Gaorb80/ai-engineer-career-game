@@ -19,6 +19,7 @@ Schema: `../docs/STORY_SCHEMA.md`. Bản trong `public/story.json` là **nội d
 - `requires` = ngưỡng tối thiểu, ví dụ `{ "skill": 6 }` nghĩa là cần Kỹ năng ≥ 6. Lựa chọn chưa đủ bị khóa kèm lý do, không bị ẩn.
 - `effects` cộng dồn vào stats; chỉ số được phép âm (nợ, kiệt sức), thanh hiển thị chỉ kẹp trong khoảng 0..trần.
 - Hiệu ứng từng lựa chọn chỉ hiện khi `meta.showEffects: true`; bản mẫu để `false`. Lựa chọn bị khóa vẫn ghi "Cần X ≥ N".
+- Trần mỗi thanh lấy từ `meta.statMax` (ví dụ `{ "skill": 10 }`); thiếu key thì mặc định 10.
 - Node có `ending` không được có `choices`; `ending.source` là `video` (có trong video gốc) hoặc `extended` (mở rộng).
 - `image` là đường dẫn tương đối trong `public/` (ví dụ `"images/level-3.jpg"`), bỏ trống nếu không có ảnh.
 
@@ -28,4 +29,4 @@ Schema: `../docs/STORY_SCHEMA.md`. Bản trong `public/story.json` là **nội d
 
 ## Kiểm tra trước khi merge
 
-`npm run validate` báo lỗi khi: `next` không tồn tại, node ending có `choices`, node không tới được từ `start`, node không có lối thoát không `requires`, node không đi tới được kết nào (kẹt hoặc lặp vô tận), thiếu trường bắt buộc, chỉ số lạ. In danh sách kết ở cuối.
+`npm run validate` báo lỗi khi: `next` không tồn tại, node ending có `choices`, node không tới được từ `start`, node không có lối thoát không `requires`, node không đi tới được kết nào (kẹt hoặc lặp vô tận), thiếu trường bắt buộc, chỉ số lạ, `meta.statMax`/`meta.showEffects` sai kiểu. In danh sách kết ở cuối.
