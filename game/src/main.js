@@ -41,6 +41,14 @@ function imageSrc(path) {
   return String(path).replace(/^\/+/, "");
 }
 
+// Đưa focus về tiêu đề sau khi render lại để bàn phím/screen reader không mất vị trí.
+function focusTitle() {
+  const title = app.querySelector("h1");
+  if (!title) return;
+  title.setAttribute("tabindex", "-1");
+  title.focus({ preventScroll: true });
+}
+
 function allEndings() {
   return Object.entries(story.nodes)
     .filter(([, node]) => isEnding(node))
@@ -82,6 +90,7 @@ function renderTitle() {
       }
     </main>`;
   window.scrollTo(0, 0);
+  focusTitle();
 }
 
 function statCap(key) {
@@ -153,6 +162,7 @@ function renderNode() {
       </div>
     </main>`;
   window.scrollTo(0, 0);
+  focusTitle();
 }
 
 function renderEnding(node) {
@@ -179,6 +189,7 @@ function renderEnding(node) {
       </div>
     </main>`;
   window.scrollTo(0, 0);
+  focusTitle();
 }
 
 function renderLibrary() {
@@ -212,6 +223,7 @@ function renderLibrary() {
       </div>
     </main>`;
   window.scrollTo(0, 0);
+  focusTitle();
 }
 
 function renderBroken() {
@@ -223,6 +235,7 @@ function renderBroken() {
         <button class="btn primary" data-action="start">Bắt đầu lại</button>
       </div>
     </main>`;
+  focusTitle();
 }
 
 function startRun(continueSaved) {
